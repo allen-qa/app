@@ -29,10 +29,16 @@ const baseStyle = `
   .subtitle { color: #888; font-size: 0.95rem; margin-bottom: 2rem; }
   h2 { font-size: 1.15rem; margin-top: 1.8rem; margin-bottom: 0.5rem; color: #222; }
   p, li { font-size: 0.95rem; color: #444; }
-  ul { padding-left: 1.25rem; margin-bottom: 0.75rem; }
+  ul, ol { padding-left: 1.25rem; margin-bottom: 0.75rem; }
   li { margin-bottom: 0.35rem; }
   a { color: #2563eb; text-decoration: none; }
   a:hover { text-decoration: underline; }
+  p, li, h1, h2 { overflow-wrap: break-word; word-break: break-word; }
+  @media (max-width: 480px) {
+    body { padding: 1.5rem 1rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.05rem; }
+  }
   .section { margin-bottom: 1.5rem; }
   .contact-box {
     background: #fff;
