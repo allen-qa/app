@@ -186,6 +186,11 @@ const supportHTML = `<!DOCTYPE html>
   </div>
 
   <div class="section">
+    <h2>Quick-Log from Notifications</h2>
+    <p>When you receive a potty check notification, press and hold it to see quick-log buttons (<strong>Pee</strong>, <strong>Poop</strong>, <strong>Both</strong>, or <strong>Nothing</strong>) — no need to open the app.</p>
+  </div>
+
+  <div class="section">
     <h2>How to Restore Purchases</h2>
     <ol>
       <li>Go to <strong>Settings &gt; Household</strong></li>
