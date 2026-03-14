@@ -84,7 +84,7 @@ const privacyHTML = `<!DOCTYPE html>
 
   <div class="section">
     <h2>In-App Purchase</h2>
-    <p>PottyTime offers a one-time $2.99 purchase via Apple StoreKit. Apple handles all payment processing — we do not see or store any payment information.</p>
+    <p>PottyTime offers a one-time $4.99 purchase via Apple StoreKit. Apple handles all payment processing — we do not see or store any payment information.</p>
   </div>
 
   <div class="section">
@@ -147,7 +147,7 @@ const supportHTML = `<!DOCTYPE html>
     <ol>
       <li>Go to <strong>Settings &gt; Household</strong></li>
       <li>Sign in with Apple (free)</li>
-      <li>Tap <strong>"Unlock Family Sharing"</strong> ($2.99 one-time purchase)</li>
+      <li>Tap <strong>"Unlock Family Sharing"</strong> ($4.99 one-time purchase)</li>
       <li>Tap <strong>"Create Household"</strong></li>
       <li>Share the 6-character invite code with family members</li>
     </ol>
@@ -196,7 +196,7 @@ const supportHTML = `<!DOCTYPE html>
       <li>Go to <strong>Settings &gt; Household</strong></li>
       <li>Tap <strong>"Restore Purchase"</strong></li>
     </ol>
-    <p>Your $2.99 Family Sharing purchase will be restored if previously bought on the same Apple ID. Non-consumable purchases automatically restore across all devices on the same Apple ID.</p>
+    <p>Your $4.99 Family Sharing purchase will be restored if previously bought on the same Apple ID. Non-consumable purchases automatically restore across all devices on the same Apple ID.</p>
   </div>
 
   <div class="section">
