@@ -246,7 +246,7 @@ const termsHTML = `<!DOCTYPE html>
 
   <div class="section">
     <h2>In-App Purchase</h2>
-    <p>PottyTime offers a one-time $6.99 purchase that unlocks household/family sharing — including real-time sync via Firebase Firestore, invite codes, and multi-user logging. Only the household creator pays; joining a household is free.</p>
+    <p>PottyTime offers a one-time $6.99 purchase that unlocks household/family sharing — including real-time sync via Firebase Firestore, invite codes, and multi-user logging. Only the household creator pays; joining a household is free. In-app purchase pricing is subject to change. The current price is always displayed in the App Store before purchase.</p>
     <p>All purchases are processed by Apple via StoreKit. Purchases are non-refundable through PottyTime — if you need a refund, please contact <a href="https://support.apple.com">Apple Support</a> directly.</p>
   </div>
 
