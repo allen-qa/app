@@ -481,7 +481,9 @@ const guideHTML = `<!DOCTYPE html>
   </div>
 
   <div class="section">
-    <h2>Home Screen Widget</h2>
+    <h2>Widgets</h2>
+
+    <h3>Home Screen Widget</h3>
     <p>Add a PottyTime widget to your home screen for at-a-glance info.</p>
     <ol>
       <li>Long-press your home screen and tap <strong>+</strong> in the top corner.</li>
@@ -489,6 +491,15 @@ const guideHTML = `<!DOCTYPE html>
       <li>Choose <strong>small</strong> (last event + time since) or <strong>medium</strong> (last event + daily stats).</li>
     </ol>
     <p>The widget updates automatically when you log events and matches your chosen accent color.</p>
+
+    <h3>Lock Screen Widget</h3>
+    <p>Add a PottyTime widget directly to your lock screen.</p>
+    <ol>
+      <li>Long-press your lock screen and tap <strong>Customize</strong>.</li>
+      <li>Select the widget area.</li>
+      <li>Search for <strong>PottyTime</strong>.</li>
+      <li>Choose <strong>circular</strong> (paw print with time since last potty) or <strong>rectangular</strong> (dog name, last potty time, and today's stats).</li>
+    </ol>
   </div>
 
   <div class="section">
