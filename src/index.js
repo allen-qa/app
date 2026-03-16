@@ -107,7 +107,9 @@ const privacyHTML = `<!DOCTYPE html>
 
   <div class="section">
     <h2>Location Data (Optional)</h2>
-    <p>If you enable location logging, GPS coordinates are attached to potty events and stored in Firestore. Your home location (if set) is stored <strong>locally on your device only</strong> and is never uploaded.</p>
+    <p>If you enable "Log GPS Location" in Settings, GPS coordinates are optionally attached to potty events. If you are in a household, event data — including GPS coordinates — is synced to Google Cloud Firestore and is visible to all household members (e.g., on the shared map).</p>
+    <p>Your <strong>home location</strong> (used for geofence alerts) is stored <strong>locally on your device only</strong> and is never uploaded to our servers.</p>
+    <p>You can disable GPS location logging at any time in <strong>Settings</strong>.</p>
   </div>
 
   <div class="section">
@@ -150,7 +152,7 @@ const privacyHTML = `<!DOCTYPE html>
     </div>
   </div>
 
-  <p class="footer">Last updated March 2026</p>
+  <p class="footer">Last updated March 16, 2026</p>
   ${footerHTML}
 </body>
 </html>`;
