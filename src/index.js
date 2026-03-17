@@ -106,6 +106,11 @@ const privacyHTML = `<!DOCTYPE html>
   </div>
 
   <div class="section">
+    <h2>Push Notifications</h2>
+    <p>PottyTime uses Firebase Cloud Messaging (FCM) to deliver push notifications when household members log events. Your device's FCM token is stored in Firestore alongside your user ID and is used solely to deliver these notifications. FCM tokens are automatically removed when you delete your account.</p>
+  </div>
+
+  <div class="section">
     <h2>Location Data (Optional)</h2>
     <p>If you enable "Log GPS Location" in Settings, GPS coordinates are optionally attached to potty events. If you are in a household, event data — including GPS coordinates — is synced to Google Cloud Firestore and is visible to all household members (e.g., on the shared map).</p>
     <p>Your <strong>home location</strong> (used for home radius alerts) is stored <strong>locally on your device only</strong> and is never uploaded to our servers.</p>
@@ -137,7 +142,14 @@ const privacyHTML = `<!DOCTYPE html>
       <li>Home location coordinates</li>
       <li>Notification preferences</li>
       <li>Theme settings and accent color</li>
+      <li>App icon preference</li>
+      <li>Accent color selection</li>
     </ul>
+  </div>
+
+  <div class="section">
+    <h2>Data Retention</h2>
+    <p>When you delete your account, all associated data — including your Firebase user profile, household membership, potty events, dog profiles, and FCM token — is permanently deleted from our servers. If you leave a household without deleting your account, your events and dog contributions remain in the household for other members.</p>
   </div>
 
   <div class="section">
@@ -171,6 +183,19 @@ const supportHTML = `<!DOCTYPE html>
 
   <div class="section">
     <p>PottyTime is a dog potty tracking app with household sharing. Log potty events, track your dogs' routines, and keep everyone in your household in sync.</p>
+  </div>
+
+  <div class="section">
+    <h2>Features</h2>
+    <ul>
+      <li>Multi-dog support</li>
+      <li>6 color palettes with matching app icons</li>
+      <li>Lock screen &amp; home screen widgets</li>
+      <li>Apple Watch companion app</li>
+      <li>Siri shortcuts</li>
+      <li>PDF report export</li>
+      <li>Interactive map with pins &amp; heatmap</li>
+    </ul>
   </div>
 
   <div class="section">
@@ -231,6 +256,18 @@ const supportHTML = `<!DOCTYPE html>
   </div>
 
   <div class="section">
+    <h2>Troubleshooting</h2>
+    <h3>Notifications not working</h3>
+    <p>Make sure notifications are enabled in iOS Settings &gt; PottyTime. For home alerts, location permission must be set to "Always". For household notifications, all members must be signed in.</p>
+    <h3>Events not syncing</h3>
+    <p>Pull down on the Dashboard to refresh. Make sure you have an internet connection and are signed into your household. Events sync in real-time when the app is open.</p>
+    <h3>Location not updating</h3>
+    <p>Go to Settings &gt; PottyTime &gt; Location and ensure it's set to "Always" for home alerts. Tap "Update to Current Location" in the app's home location settings to refresh.</p>
+    <h3>Widget not updating</h3>
+    <p>Widgets refresh every 15 minutes. After logging an event, the widget will update on the next refresh cycle. Try removing and re-adding the widget if it appears stuck.</p>
+  </div>
+
+  <div class="section">
     <h2>Contact Us</h2>
     <div class="contact-box">
       <p>Need help or have feedback? Email us at <a href="mailto:pottytimeapp@gmail.com">pottytimeapp@gmail.com</a></p>
@@ -273,6 +310,7 @@ const termsHTML = `<!DOCTYPE html>
   <div class="section">
     <h2>Account Deletion</h2>
     <p>You can delete your account at any time from <strong>Settings &gt; Household &gt; Delete Account</strong>. This revokes your Apple sign-in token and permanently deletes your Firebase account and associated data.</p>
+    <p>Account deletion is permanent and cannot be undone. All your data, including events, dog profiles, and household membership, is removed from our servers immediately.</p>
   </div>
 
   <div class="section">
@@ -284,6 +322,11 @@ const termsHTML = `<!DOCTYPE html>
   <div class="section">
     <h2>Location Data</h2>
     <p>PottyTime optionally attaches GPS coordinates to potty events when location logging is enabled. These coordinates are stored in Firebase Firestore. Your home location (used for geofencing alerts) is stored <strong>locally on your device only</strong> and is never uploaded to our servers.</p>
+  </div>
+
+  <div class="section">
+    <h2>Notifications</h2>
+    <p>PottyTime sends local notifications for home arrival/departure alerts, potty reminders, and quick-log prompts. If you are in a household, push notifications are sent via Firebase Cloud Messaging when other members log events. You can manage notification permissions in iOS Settings at any time.</p>
   </div>
 
   <div class="section">
