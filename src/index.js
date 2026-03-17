@@ -256,7 +256,7 @@ const termsHTML = `<!DOCTYPE html>
 
   <div class="section">
     <h2>About PottyTime</h2>
-    <p>PottyTime is an iOS app for tracking your dog's potty events. Features include GPS map visualization, geofencing auto-prompts, multi-dog support, calendar history, smart reminders, PDF vet reports, and a home screen widget.</p>
+    <p>PottyTime is an iOS app for tracking your dog's potty events. Features include GPS map visualization, home radius auto-prompts, multi-dog support, calendar history, smart reminders, PDF vet reports, home screen and lock screen widgets, Apple Watch companion app, and Siri Shortcuts.</p>
   </div>
 
   <div class="section">
@@ -365,7 +365,7 @@ const guideHTML = `<!DOCTYPE html>
     <p><strong>Long-press</strong> anywhere on the Map tab to log an event at that specific location. This is useful if you want to record exactly where your dog went on a walk.</p>
 
     <h3>Logging from Notifications</h3>
-    <p>When you receive a potty reminder or home alert notification, tap the notification action buttons to log directly without opening the app.</p>
+    <p>When you receive a potty reminder or home alert notification, long-press the notification to reveal action buttons (Pee, Poop, Both, Nothing), then tap one to log directly without opening the app.</p>
   </div>
 
   <div class="section">
