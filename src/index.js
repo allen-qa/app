@@ -108,7 +108,7 @@ const privacyHTML = `<!DOCTYPE html>
   <div class="section">
     <h2>Location Data (Optional)</h2>
     <p>If you enable "Log GPS Location" in Settings, GPS coordinates are optionally attached to potty events. If you are in a household, event data — including GPS coordinates — is synced to Google Cloud Firestore and is visible to all household members (e.g., on the shared map).</p>
-    <p>Your <strong>home location</strong> (used for geofence alerts) is stored <strong>locally on your device only</strong> and is never uploaded to our servers.</p>
+    <p>Your <strong>home location</strong> (used for home radius alerts) is stored <strong>locally on your device only</strong> and is never uploaded to our servers.</p>
     <p>You can disable GPS location logging at any time in <strong>Settings</strong>.</p>
   </div>
 
@@ -401,7 +401,7 @@ const guideHTML = `<!DOCTYPE html>
       <li><strong>Pin mode</strong> — Each event appears as a colored pin. Tap a cluster to see individual events.</li>
       <li><strong>Heatmap mode</strong> — Toggle to see a heat overlay of high-activity areas.</li>
       <li><strong>Filters</strong> — Filter by potty type (pee, poop, both, accident) to focus on specific events.</li>
-      <li><strong>Home radius</strong> — If you've set a home location, a circle shows your geofence radius.</li>
+      <li><strong>Home radius</strong> — If you've set a home location, a circle shows your home radius.</li>
       <li><strong>Long-press</strong> anywhere on the map to log a new event at that location.</li>
     </ul>
     <div class="tip-box">
@@ -433,8 +433,8 @@ const guideHTML = `<!DOCTYPE html>
 
     <h3>Home Location</h3>
     <ul>
-      <li>Set or update your home address for geofence-based notifications.</li>
-      <li>Adjust the <strong>geofence radius</strong> (how far from home triggers alerts).</li>
+      <li>Set or update your home address for home radius-based notifications.</li>
+      <li>Adjust the <strong>home radius</strong> (how far from home triggers alerts).</li>
     </ul>
 
     <h3>GPS Location Logging</h3>
