@@ -481,7 +481,7 @@ const guideHTML = `<!DOCTYPE html>
   </div>
 
   <div class="section">
-    <h2>Widgets</h2>
+    <h2>Widgets &amp; Apple Watch</h2>
 
     <h3>Home Screen Widget</h3>
     <p>Add a PottyTime widget to your home screen for at-a-glance info.</p>
@@ -500,6 +500,25 @@ const guideHTML = `<!DOCTYPE html>
       <li>Search for <strong>PottyTime</strong>.</li>
       <li>Choose <strong>circular</strong> (paw print with time since last potty) or <strong>rectangular</strong> (dog name, last potty time, and today's stats).</li>
     </ol>
+
+    <h3>Apple Watch</h3>
+    <p>The Apple Watch companion app shows your dog's dashboard at a glance and lets you log potty events with a quick tap from your wrist. Your watch syncs automatically with the iPhone app.</p>
+  </div>
+
+  <div class="section">
+    <h2>Siri Shortcuts</h2>
+    <p>Log potty events and check your dog's last potty hands-free with Siri. Shortcuts are available immediately with no setup required.</p>
+    <p>Voice commands:</p>
+    <ul>
+      <li>"Log pee in PottyTime" or "Log a pee in PottyTime"</li>
+      <li>"Log poop in PottyTime" or "Log a poop in PottyTime"</li>
+      <li>"Log both in PottyTime"</li>
+      <li>"Log an accident in PottyTime"</li>
+      <li>"Log a potty in PottyTime" (quick log, defaults to pee)</li>
+      <li>"When was the last potty in PottyTime"</li>
+      <li>"Check last potty in PottyTime"</li>
+    </ul>
+    <p>Events logged via Siri sync to your household and update widgets automatically. You can also find and customize these shortcuts in the Shortcuts app.</p>
   </div>
 
   <div class="section">
