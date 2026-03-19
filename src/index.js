@@ -256,6 +256,13 @@ const supportHTML = `<!DOCTYPE html>
   </div>
 
   <div class="section">
+    <h2>How Does Walk Tracking Work?</h2>
+    <p>Start a walk from the <strong>Map</strong> tab by tapping the walk button. The app tracks your route using GPS in real time, showing elapsed time and distance. When you're done, tap <strong>Stop</strong> to save the walk.</p>
+    <p>Walks are saved locally on your device and are not synced to your household. You can view past walks by tapping the <strong>Walks</strong> chip on the map, then tapping any walk to see its route.</p>
+    <p>Walk tracking requires at least <strong>"While In Use"</strong> location permission.</p>
+  </div>
+
+  <div class="section">
     <h2>Troubleshooting</h2>
     <h3>Notifications not working</h3>
     <p>Make sure notifications are enabled in iOS Settings &gt; PottyTime. For home alerts, location permission must be set to "Always". For household notifications, all members must be signed in.</p>
@@ -417,7 +424,7 @@ const guideHTML = `<!DOCTYPE html>
     <ul>
       <li><strong>Dog Switcher</strong> — Scroll through your dogs at the top. Tap a dog to switch. Tap the <strong>+</strong> to add a new dog.</li>
       <li><strong>Last Potty</strong> — How long since the last successful potty event.</li>
-      <li><strong>Next Break Prediction</strong> — Based on your dog's patterns, when they might need to go next.</li>
+      <li><strong>Next Break Prediction</strong> — Based on the average time between successful outings over the last 2 weeks, when your dog might need to go next.</li>
       <li><strong>Today's Activity</strong> — A breakdown of today's pees, poops, and accidents.</li>
       <li><strong>Pull down</strong> to refresh data if you're syncing with a household.</li>
     </ul>
@@ -443,12 +450,19 @@ const guideHTML = `<!DOCTYPE html>
     <ul>
       <li><strong>Pin mode</strong> — Each event appears as a colored pin. Tap a cluster to see individual events.</li>
       <li><strong>Heatmap mode</strong> — Toggle to see a heat overlay of high-activity areas.</li>
-      <li><strong>Filters</strong> — Filter by potty type (pee, poop, both, accident) to focus on specific events.</li>
+      <li><strong>Filters</strong> — Use dog filter chips to show events for specific dogs, date filter chips to narrow by time range, and the <strong>Walks</strong> chip to browse past walks.</li>
       <li><strong>Home radius</strong> — If you've set a home location, a circle shows your home radius.</li>
       <li><strong>Long-press</strong> anywhere on the map to log a new event at that location.</li>
     </ul>
     <div class="tip-box">
       <p><strong>Tip:</strong> Enable "Log GPS Location" in Settings to automatically capture coordinates when you log events from the Dashboard.</p>
+    </div>
+
+    <h3>Walk Tracking</h3>
+    <p>Start a timed walk by tapping the <strong>walk button</strong> (figure.walk icon) floating on the map. While walking, the app tracks your GPS route in real time and displays elapsed time and distance in a status bar at the top.</p>
+    <p>When you're done, tap <strong>Stop</strong> to save the walk. To browse past walks, tap the <strong>Walks</strong> chip on the map — this opens a list of your saved walks. Tap any walk to view its route drawn on the map with a green marker (start) and red marker (end).</p>
+    <div class="tip-box">
+      <p><strong>Note:</strong> Walk data is stored locally on your device only and is not synced to your household. Walk tracking requires location permission.</p>
     </div>
   </div>
 
