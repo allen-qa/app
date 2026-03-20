@@ -109,6 +109,16 @@ const privacyHTML = `<!DOCTYPE html>
   </div>
 
   <div class="section">
+    <h2>Apple Watch</h2>
+    <p>The Apple Watch companion app syncs event data (dog name, event type, timestamp) to the paired iPhone via WatchConnectivity. No data is sent to external servers from the Watch — it relays through the iPhone app, which then syncs to Firestore if the user is in a household.</p>
+  </div>
+
+  <div class="section">
+    <h2>Widgets</h2>
+    <p>Home Screen and Lock Screen widgets access a limited set of data (dog name, dog photo, last event timestamp, last event type, daily counts, accent color) stored in a shared App Group container on the device. This data never leaves the device or is sent to any server.</p>
+  </div>
+
+  <div class="section">
     <h2>Push Notifications</h2>
     <p>PottyTime uses Firebase Cloud Messaging (FCM) to deliver push notifications when household members log events. Your device's FCM token is stored in Firestore alongside your user ID and is used solely to deliver these notifications. FCM tokens are automatically removed when you delete your account.</p>
   </div>
@@ -161,13 +171,18 @@ const privacyHTML = `<!DOCTYPE html>
   </div>
 
   <div class="section">
+    <h2>Children's Privacy</h2>
+    <p>PottyTime is not directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us with personal information, please contact us at <a href="mailto:pottytimeapp@gmail.com">pottytimeapp@gmail.com</a> and we will delete it.</p>
+  </div>
+
+  <div class="section">
     <h2>Contact</h2>
     <div class="contact-box">
       <p>Questions about your data? Reach us at <a href="mailto:pottytimeapp@gmail.com">pottytimeapp@gmail.com</a></p>
     </div>
   </div>
 
-  <p class="footer">Last updated March 16, 2026</p>
+  <p class="footer">Last updated March 20, 2026</p>
   ${footerHTML}
 </body>
 </html>`;
@@ -321,6 +336,7 @@ const termsHTML = `<!DOCTYPE html>
     <h2>Account Deletion</h2>
     <p>You can delete your account at any time from <strong>Settings &gt; Household &gt; Delete Account</strong>. This revokes your Apple sign-in token and permanently deletes your Firebase account and associated data.</p>
     <p>Account deletion is permanent and cannot be undone. All your data, including events, dog profiles, and household membership, is removed from our servers immediately.</p>
+    <p>When you delete your account, your data is permanently removed from our servers within 30 days. Locally stored data is deleted immediately.</p>
   </div>
 
   <div class="section">
@@ -345,8 +361,18 @@ const termsHTML = `<!DOCTYPE html>
   </div>
 
   <div class="section">
+    <h2>Termination</h2>
+    <p>We reserve the right to suspend or terminate your access to PottyTime at any time, with or without cause, with or without notice. You may stop using the app at any time. Upon termination, your right to use the app ceases immediately.</p>
+  </div>
+
+  <div class="section">
     <h2>Disclaimer</h2>
     <p>PottyTime is provided "as is" without warranties of any kind. We do our best to keep the app running smoothly, but we are not liable for any data loss, service interruptions, or issues arising from your use of the app.</p>
+  </div>
+
+  <div class="section">
+    <h2>Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, PottyTime and its developer shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of data, use, or profits, arising out of or related to your use of the app. Our total liability for any claim shall not exceed the amount you paid for the app or in-app purchase giving rise to the claim.</p>
   </div>
 
   <div class="section">
@@ -361,7 +387,7 @@ const termsHTML = `<!DOCTYPE html>
     </div>
   </div>
 
-  <p class="footer">Last updated March 2026</p>
+  <p class="footer">Last updated March 20, 2026</p>
   ${footerHTML}
 </body>
 </html>`;
