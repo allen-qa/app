@@ -482,8 +482,9 @@ const landingHTML = `<!DOCTYPE html>
       justify-content: center;
       flex-wrap: nowrap;
       overflow-x: auto;
+      overflow-y: visible;
       -webkit-overflow-scrolling: touch;
-      padding: 0.5rem 0;
+      padding: 1.5rem 0;
       scroll-snap-type: x mandatory;
     }
     .screenshot-slot {
