@@ -3,6 +3,9 @@ export default {
     const url = new URL(request.url);
     const path = url.pathname;
 
+    if (path === '/' || path === '') {
+      return new Response(landingHTML, { headers: { 'Content-Type': 'text/html;charset=UTF-8' } });
+    }
     if (path === '/privacy') {
       return new Response(privacyHTML, { headers: { 'Content-Type': 'text/html;charset=UTF-8' } });
     }
@@ -360,6 +363,289 @@ const termsHTML = `<!DOCTYPE html>
 
   <p class="footer">Last updated March 2026</p>
   ${footerHTML}
+</body>
+</html>`;
+
+const landingHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PottyTime — Dog Potty Tracker for iPhone</title>
+  <meta name="description" content="House training your dog, made simple. Log potty breaks in one tap, get smart reminders, and track your pup's progress with charts and insights.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #0B1A2E;
+      color: #E8EEF4;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: #5B9BD5; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem 3rem;
+      background: linear-gradient(180deg, #0F2341 0%, #0B1A2E 100%);
+    }
+    .hero-icon {
+      font-size: 5rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.5px;
+    }
+    .hero .tagline {
+      font-size: 1.35rem;
+      color: #A0C4E8;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    .hero .description {
+      font-size: 1.05rem;
+      color: #8BA8C8;
+      max-width: 540px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .app-store-badge {
+      display: inline-block;
+      transition: opacity 0.2s;
+    }
+    .app-store-badge:hover { opacity: 0.85; text-decoration: none; }
+    .app-store-badge img {
+      height: 54px;
+      border-radius: 12px;
+    }
+    .app-store-btn {
+      display: inline-block;
+      background: #fff;
+      color: #0B1A2E;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 0.85rem 2rem;
+      border-radius: 12px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .app-store-btn:hover { background: #E8EEF4; transform: translateY(-1px); text-decoration: none; }
+    .app-store-btn svg { vertical-align: middle; margin-right: 0.4rem; margin-top: -2px; }
+
+    /* Screenshots */
+    .screenshots {
+      padding: 2rem 1.5rem 3rem;
+      text-align: center;
+    }
+    .screenshots h2 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #5B7A9D;
+      margin-bottom: 1.5rem;
+    }
+    .screenshot-grid {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 0.5rem 0;
+      scroll-snap-type: x mandatory;
+    }
+    .screenshot-slot {
+      flex: 0 0 220px;
+      height: 440px;
+      background: #152A45;
+      border: 2px dashed #2A4060;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3A5A7A;
+      font-size: 0.9rem;
+      scroll-snap-align: center;
+    }
+
+    /* Features */
+    .features {
+      padding: 3rem 1.5rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .features h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .features .section-subtitle {
+      text-align: center;
+      color: #6B8DB5;
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    .feature-card {
+      background: #111F35;
+      border: 1px solid #1C3350;
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .feature-card:hover {
+      border-color: #4A90D9;
+      transform: translateY(-2px);
+    }
+    .feature-card .icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .feature-card h3 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+    .feature-card p {
+      font-size: 0.92rem;
+      color: #7A9ABE;
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    .landing-footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-top: 1px solid #1C3350;
+    }
+    .landing-footer nav {
+      margin-bottom: 1rem;
+    }
+    .landing-footer nav a {
+      margin: 0 0.75rem;
+      color: #5B9BD5;
+      font-size: 0.95rem;
+    }
+    .landing-footer .tagline-footer {
+      color: #4A6A8A;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .landing-footer .copyright {
+      color: #3A5570;
+      font-size: 0.8rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero { padding: 3.5rem 1.25rem 2.5rem; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero .tagline { font-size: 1.15rem; }
+      .hero .description { font-size: 0.95rem; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .screenshot-slot { flex: 0 0 180px; height: 360px; }
+      .features h2 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="hero-icon">🐾</span>
+    <h1>PottyTime</h1>
+    <p class="tagline">House training your dog, made simple.</p>
+    <p class="description">Log potty breaks in one tap, get smart reminders when you leave or return home, and track your pup's progress with charts and insights.</p>
+    <a href="https://apps.apple.com/app/pottytime" class="app-store-btn">
+      <svg width="20" height="24" viewBox="0 0 20 24" fill="none"><path d="M16.52 12.46c-.03-2.85 2.33-4.22 2.44-4.29-1.33-1.94-3.4-2.21-4.13-2.24-1.76-.18-3.43 1.03-4.33 1.03-.89 0-2.27-1.01-3.73-.98-1.92.03-3.69 1.12-4.68 2.84-2 3.46-.51 8.59 1.43 11.4.95 1.38 2.09 2.92 3.58 2.86 1.43-.06 1.98-.93 3.71-.93 1.74 0 2.23.93 3.75.9 1.55-.03 2.53-1.4 3.47-2.78 1.1-1.6 1.55-3.14 1.57-3.22-.03-.01-3.03-1.16-3.08-4.59zM13.68 3.92C14.47 2.96 15 1.66 14.87.34c-1.1.05-2.44.74-3.23 1.67-.71.82-1.33 2.14-1.16 3.4 1.23.1 2.48-.62 3.2-1.49z" fill="currentColor"/></svg>
+      Download on the App Store
+    </a>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="screenshots">
+    <h2>App Preview</h2>
+    <div class="screenshot-grid">
+      <div class="screenshot-slot">Screenshot 1</div>
+      <div class="screenshot-slot">Screenshot 2</div>
+      <div class="screenshot-slot">Screenshot 3</div>
+      <div class="screenshot-slot">Screenshot 4</div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <h2>Everything you need to potty train your pup</h2>
+    <p class="section-subtitle">Powerful features, dead-simple interface</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="icon">⚡</span>
+        <h3>One-Tap Logging</h3>
+        <p>Log pee, poop, both, or accidents instantly. Long-press to add notes and adjust the time.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">🏠</span>
+        <h3>Smart Home Alerts</h3>
+        <p>Automatic reminders when you leave or arrive home so you never forget a potty break.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">📊</span>
+        <h3>Charts &amp; Insights</h3>
+        <p>Weekly trends, peak potty times, and daily stats to understand your dog's patterns.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">🗺️</span>
+        <h3>GPS Map</h3>
+        <p>Color-coded pins, heatmap overlay, and walk tracking to see where your dog goes.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">👨‍👩‍👧‍👦</span>
+        <h3>Family Sharing</h3>
+        <p>Sync with your whole household in real time. One-time $6.99 purchase, free to join.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">⌚</span>
+        <h3>Apple Watch</h3>
+        <p>Quick logging from your wrist. See your dog's dashboard and log events with a tap.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">📱</span>
+        <h3>Widgets</h3>
+        <p>Home Screen and Lock Screen widgets for at-a-glance info on your dog's last break.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">🔔</span>
+        <h3>Potty Reminders</h3>
+        <p>Smart interval reminders based on your dog's patterns so you're always one step ahead.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <nav>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/support">Support</a>
+      <a href="/terms">Terms of Use</a>
+      <a href="/guide">User Guide</a>
+    </nav>
+    <p class="tagline-footer">Made with love for dog parents everywhere</p>
+    <p class="copyright">&copy; 2026 PottyTime. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>`;
 
