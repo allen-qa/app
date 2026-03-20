@@ -489,12 +489,78 @@ const landingHTML = `<!DOCTYPE html>
     .screenshot-slot {
       flex: 0 0 220px;
       scroll-snap-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .screenshot-slot:hover {
+      transform: scale(1.08);
     }
     .screenshot-slot img {
       width: 220px;
       height: auto;
       border-radius: 24px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      pointer-events: none;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .lightbox-content img {
+      max-height: 85vh;
+      max-width: min(400px, 70vw);
+      border-radius: 24px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.6);
+      user-select: none;
+    }
+    .lb-btn {
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .lb-btn:hover { background: rgba(255,255,255,0.25); }
+    .lb-close {
+      position: absolute;
+      top: -48px;
+      right: 0;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .lb-close:hover { opacity: 1; }
+    @media (max-width: 640px) {
+      .lightbox-content img { max-width: 75vw; }
+      .lb-btn { width: 40px; height: 40px; font-size: 1.5rem; }
     }
 
     /* Features */
@@ -602,12 +668,52 @@ const landingHTML = `<!DOCTYPE html>
   <section class="screenshots">
     <h2>App Preview</h2>
     <div class="screenshot-grid">
-      <div class="screenshot-slot"><img src="/screenshots/dashboard.PNG" alt="PottyTime Dashboard" loading="lazy"></div>
-      <div class="screenshot-slot"><img src="/screenshots/history.PNG" alt="PottyTime History" loading="lazy"></div>
-      <div class="screenshot-slot"><img src="/screenshots/insights.PNG" alt="PottyTime Insights" loading="lazy"></div>
-      <div class="screenshot-slot"><img src="/screenshots/map.PNG" alt="PottyTime Map" loading="lazy"></div>
+      <div class="screenshot-slot" onclick="openLightbox(0)"><img src="/screenshots/dashboard.PNG" alt="PottyTime Dashboard" loading="lazy"></div>
+      <div class="screenshot-slot" onclick="openLightbox(1)"><img src="/screenshots/history.PNG" alt="PottyTime History" loading="lazy"></div>
+      <div class="screenshot-slot" onclick="openLightbox(2)"><img src="/screenshots/insights.PNG" alt="PottyTime Insights" loading="lazy"></div>
+      <div class="screenshot-slot" onclick="openLightbox(3)"><img src="/screenshots/map.PNG" alt="PottyTime Map" loading="lazy"></div>
     </div>
   </section>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-overlay" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+    <div class="lightbox-content">
+      <button class="lb-close" onclick="closeLightbox()">&times;</button>
+      <button class="lb-btn" onclick="navigateLightbox(-1)">&#8249;</button>
+      <img id="lb-img" src="" alt="">
+      <button class="lb-btn" onclick="navigateLightbox(1)">&#8250;</button>
+    </div>
+  </div>
+
+  <script>
+    const lbImages = [
+      '/screenshots/dashboard.PNG',
+      '/screenshots/history.PNG',
+      '/screenshots/insights.PNG',
+      '/screenshots/map.PNG'
+    ];
+    let lbIndex = 0;
+    function openLightbox(i) {
+      lbIndex = i;
+      document.getElementById('lb-img').src = lbImages[lbIndex];
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    function navigateLightbox(dir) {
+      lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+      document.getElementById('lb-img').src = lbImages[lbIndex];
+    }
+    document.addEventListener('keydown', function(e) {
+      if (!document.getElementById('lightbox').classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+  </script>
 
   <!-- Features -->
   <section class="features">
