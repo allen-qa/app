@@ -462,16 +462,13 @@ const landingHTML = `<!DOCTYPE html>
     }
     .screenshot-slot {
       flex: 0 0 220px;
-      height: 440px;
-      background: #152A45;
-      border: 2px dashed #2A4060;
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #3A5A7A;
-      font-size: 0.9rem;
       scroll-snap-align: center;
+    }
+    .screenshot-slot img {
+      width: 220px;
+      height: auto;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
 
     /* Features */
@@ -579,10 +576,10 @@ const landingHTML = `<!DOCTYPE html>
   <section class="screenshots">
     <h2>App Preview</h2>
     <div class="screenshot-grid">
-      <div class="screenshot-slot">Screenshot 1</div>
-      <div class="screenshot-slot">Screenshot 2</div>
-      <div class="screenshot-slot">Screenshot 3</div>
-      <div class="screenshot-slot">Screenshot 4</div>
+      <div class="screenshot-slot"><img src="/screenshots/dashboard.PNG" alt="PottyTime Dashboard" loading="lazy"></div>
+      <div class="screenshot-slot"><img src="/screenshots/history.PNG" alt="PottyTime History" loading="lazy"></div>
+      <div class="screenshot-slot"><img src="/screenshots/insights.PNG" alt="PottyTime Insights" loading="lazy"></div>
+      <div class="screenshot-slot"><img src="/screenshots/map.PNG" alt="PottyTime Map" loading="lazy"></div>
     </div>
   </section>
 
