@@ -90,7 +90,7 @@ const privacyHTML = `<!DOCTYPE html>
   <style>${baseStyle}</style>
 </head>
 <body>
-  <h1><a href="/" style="color:inherit;text-decoration:none;">🐾 PottyTime</a></h1>
+  <h1><a href="/" style="color:inherit;text-decoration:none;display:inline-block;transition:transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">🐾 PottyTime</a></h1>
   <p class="subtitle">Privacy Policy</p>
 
   <div class="section">
@@ -196,7 +196,7 @@ const supportHTML = `<!DOCTYPE html>
   <style>${baseStyle}</style>
 </head>
 <body>
-  <h1><a href="/" style="color:inherit;text-decoration:none;">🐾 PottyTime</a></h1>
+  <h1><a href="/" style="color:inherit;text-decoration:none;display:inline-block;transition:transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">🐾 PottyTime</a></h1>
   <p class="subtitle">Support</p>
 
   <div class="section">
@@ -313,7 +313,7 @@ const termsHTML = `<!DOCTYPE html>
   <style>${baseStyle}</style>
 </head>
 <body>
-  <h1><a href="/" style="color:inherit;text-decoration:none;">🐾 PottyTime</a></h1>
+  <h1><a href="/" style="color:inherit;text-decoration:none;display:inline-block;transition:transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">🐾 PottyTime</a></h1>
   <p class="subtitle">Terms of Use</p>
 
   <div class="section">
@@ -681,7 +681,7 @@ const guideHTML = `<!DOCTYPE html>
   <style>${baseStyle}</style>
 </head>
 <body>
-  <h1><a href="/" style="color:inherit;text-decoration:none;">🐾 PottyTime</a></h1>
+  <h1><a href="/" style="color:inherit;text-decoration:none;display:inline-block;transition:transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">🐾 PottyTime</a></h1>
   <p class="subtitle">User Guide</p>
 
   <div class="section">
