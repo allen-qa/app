@@ -1012,7 +1012,7 @@ const guideHTML = `<!DOCTYPE html>
   <div class="section">
     <h2>Need Help?</h2>
     <div class="contact-box">
-      <p>If you have questions or run into issues, contact us at <a href="mailto:support@pottytime.app">support@pottytime.app</a></p>
+      <p>If you have questions or run into issues, contact us at <a href="mailto:pottytimeapp@gmail.com">pottytimeapp@gmail.com</a></p>
     </div>
   </div>
 
