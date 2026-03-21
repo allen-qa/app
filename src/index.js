@@ -669,10 +669,10 @@ const landingHTML = `<!DOCTYPE html>
   <section class="screenshots">
     <h2>App Preview</h2>
     <div class="screenshot-grid">
-      <div class="screenshot-slot" onclick="openLightbox(0)"><img src="/screenshots/dashboard.PNG" alt="PottyTime Dashboard" loading="lazy"></div>
-      <div class="screenshot-slot" onclick="openLightbox(1)"><img src="/screenshots/history.PNG" alt="PottyTime History" loading="lazy"></div>
-      <div class="screenshot-slot" onclick="openLightbox(2)"><img src="/screenshots/insights.PNG" alt="PottyTime Insights" loading="lazy"></div>
-      <div class="screenshot-slot" onclick="openLightbox(3)"><img src="/screenshots/map.PNG" alt="PottyTime Map" loading="lazy"></div>
+      <div class="screenshot-slot" onclick="openLightbox(0)"><img src="/screenshots/dashboard.PNG?v=2" alt="PottyTime Dashboard" loading="lazy"></div>
+      <div class="screenshot-slot" onclick="openLightbox(1)"><img src="/screenshots/history.PNG?v=2" alt="PottyTime History" loading="lazy"></div>
+      <div class="screenshot-slot" onclick="openLightbox(2)"><img src="/screenshots/insights.PNG?v=2" alt="PottyTime Insights" loading="lazy"></div>
+      <div class="screenshot-slot" onclick="openLightbox(3)"><img src="/screenshots/map.PNG?v=2" alt="PottyTime Map" loading="lazy"></div>
     </div>
   </section>
 
@@ -688,10 +688,10 @@ const landingHTML = `<!DOCTYPE html>
 
   <script>
     const lbImages = [
-      '/screenshots/dashboard.PNG',
-      '/screenshots/history.PNG',
-      '/screenshots/insights.PNG',
-      '/screenshots/map.PNG'
+      '/screenshots/dashboard.PNG?v=2',
+      '/screenshots/history.PNG?v=2',
+      '/screenshots/insights.PNG?v=2',
+      '/screenshots/map.PNG?v=2'
     ];
     let lbIndex = 0;
     function openLightbox(i) {
