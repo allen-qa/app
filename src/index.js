@@ -741,24 +741,6 @@ const landingHTML = `<!DOCTYPE html>
       font-size: 0.8rem;
     }
 
-    /* Responsive */
-    @media (max-width: 640px) {
-      .hero { padding: 3rem 1.25rem 2.5rem; }
-      .hero h1 { font-size: 2.2rem; }
-      .hero .tagline { font-size: 1.15rem; }
-      .hero .description { font-size: 0.95rem; }
-      .hero-device { width: 180px; }
-      .hero-device .phone-frame { width: 180px; border-radius: 30px; }
-      .hero-device .phone-notch { width: 80px; height: 18px; }
-      .feature-grid { grid-template-columns: 1fr; }
-      .screenshot-slot .device-frame { width: 220px; border-radius: 30px; }
-      .features h2 { font-size: 1.6rem; }
-      .steps { gap: 1.5rem; }
-      .step { max-width: 280px; }
-      .watch-grid { gap: 1rem; padding: 1rem 0; }
-      .watch-slot .watch-frame { width: 100px; border-radius: 22px; }
-    }
-
     /* Apple Watch */
     .watch-section {
       padding: 3rem 1.5rem 3.5rem;
@@ -802,6 +784,28 @@ const landingHTML = `<!DOCTYPE html>
       height: auto;
       display: block;
       pointer-events: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero { padding: 3rem 1.25rem 2.5rem; }
+      .hero h1 { font-size: 2.2rem; }
+      .hero .tagline { font-size: 1.15rem; }
+      .hero .description { font-size: 0.95rem; }
+      .hero .quip { font-size: 0.85rem; }
+      .hero-device { width: 180px; }
+      .hero-device .phone-frame { width: 180px; border-radius: 30px; }
+      .hero-device .phone-notch { width: 80px; height: 18px; }
+      .how-it-works h2 { font-size: 1.4rem; }
+      .steps { gap: 1.5rem; }
+      .step { max-width: 280px; }
+      .screenshots h2 { font-size: 1.4rem; }
+      .screenshot-slot .device-frame { width: 220px; border-radius: 30px; }
+      .features h2 { font-size: 1.6rem; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .watch-section h2 { font-size: 1.4rem; }
+      .watch-grid { gap: 1rem; padding: 1rem 0; }
+      .watch-slot .watch-frame { width: 100px; border-radius: 22px; }
     }
   </style>
 </head>
