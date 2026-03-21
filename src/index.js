@@ -494,10 +494,7 @@ const landingHTML = `<!DOCTYPE html>
     a { color: #5B9BD5; text-decoration: none; }
     a:hover { text-decoration: underline; }
     .gradient-text {
-      background: linear-gradient(135deg, var(--primary), #98cbff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--primary);
     }
 
     /* Glass Nav */
