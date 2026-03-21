@@ -755,6 +755,53 @@ const landingHTML = `<!DOCTYPE html>
       .features h2 { font-size: 1.6rem; }
       .steps { gap: 1.5rem; }
       .step { max-width: 280px; }
+      .watch-grid { gap: 1rem; padding: 1rem 0; }
+      .watch-slot .watch-frame { width: 100px; border-radius: 22px; }
+    }
+
+    /* Apple Watch */
+    .watch-section {
+      padding: 3rem 1.5rem 3.5rem;
+      text-align: center;
+    }
+    .watch-section h2 {
+      font-size: 1.8rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .watch-section .section-subtitle {
+      font-size: 1.05rem;
+      color: #6B8DB5;
+      margin-bottom: 2rem;
+    }
+    .watch-grid {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 1.5rem 0;
+    }
+    .watch-slot {
+      flex: 0 0 auto;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .watch-slot:hover {
+      transform: scale(1.05);
+    }
+    .watch-slot .watch-frame {
+      width: 130px;
+      border-radius: 28px;
+      border: 3px solid #2A2A2A;
+      overflow: hidden;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+      background: #000;
+    }
+    .watch-slot .watch-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -823,12 +870,26 @@ const landingHTML = `<!DOCTYPE html>
   <!-- Screenshots -->
   <section class="screenshots">
     <h2>See It in Action</h2>
-    <p class="section-subtitle">Dashboard, history, insights, and GPS map</p>
+    <p class="section-subtitle">Dashboard, quick log, history, insights, settings, and GPS map</p>
     <div class="screenshot-grid">
       <div class="screenshot-slot" onclick="openLightbox(0)"><div class="device-frame"><img src="/screenshots/dashboard.PNG?v=2" alt="PottyTime Dashboard" loading="lazy"></div></div>
-      <div class="screenshot-slot" onclick="openLightbox(1)"><div class="device-frame"><img src="/screenshots/history.PNG?v=2" alt="PottyTime History" loading="lazy"></div></div>
-      <div class="screenshot-slot" onclick="openLightbox(2)"><div class="device-frame"><img src="/screenshots/insights.PNG?v=2" alt="PottyTime Insights" loading="lazy"></div></div>
-      <div class="screenshot-slot" onclick="openLightbox(3)"><div class="device-frame"><img src="/screenshots/map2.PNG" alt="PottyTime Map" loading="lazy"></div></div>
+      <div class="screenshot-slot" onclick="openLightbox(1)"><div class="device-frame"><img src="/screenshots/quick-log.PNG" alt="PottyTime Quick Log" loading="lazy"></div></div>
+      <div class="screenshot-slot" onclick="openLightbox(2)"><div class="device-frame"><img src="/screenshots/history.PNG?v=2" alt="PottyTime History" loading="lazy"></div></div>
+      <div class="screenshot-slot" onclick="openLightbox(3)"><div class="device-frame"><img src="/screenshots/insights.PNG?v=2" alt="PottyTime Insights" loading="lazy"></div></div>
+      <div class="screenshot-slot" onclick="openLightbox(4)"><div class="device-frame"><img src="/screenshots/settings.PNG" alt="PottyTime Settings" loading="lazy"></div></div>
+      <div class="screenshot-slot" onclick="openLightbox(5)"><div class="device-frame"><img src="/screenshots/map2.PNG" alt="PottyTime Map" loading="lazy"></div></div>
+    </div>
+  </section>
+
+  <!-- Apple Watch -->
+  <section class="watch-section">
+    <h2>Also on Apple Watch</h2>
+    <p class="section-subtitle">Log potty breaks right from your wrist</p>
+    <div class="watch-grid">
+      <div class="watch-slot" onclick="openLightbox(6)"><div class="watch-frame"><img src="/screenshots/watch-dashboard.PNG" alt="PottyTime Watch Dashboard" loading="lazy"></div></div>
+      <div class="watch-slot" onclick="openLightbox(7)"><div class="watch-frame"><img src="/screenshots/watch-log-event-button.PNG" alt="PottyTime Watch Log" loading="lazy"></div></div>
+      <div class="watch-slot" onclick="openLightbox(8)"><div class="watch-frame"><img src="/screenshots/watch-quick-log.PNG" alt="PottyTime Watch Quick Log" loading="lazy"></div></div>
+      <div class="watch-slot" onclick="openLightbox(9)"><div class="watch-frame"><img src="/screenshots/watch-logged-confirmation.PNG" alt="PottyTime Watch Confirmation" loading="lazy"></div></div>
     </div>
   </section>
 
@@ -845,9 +906,15 @@ const landingHTML = `<!DOCTYPE html>
   <script>
     const lbImages = [
       '/screenshots/dashboard.PNG?v=2',
+      '/screenshots/quick-log.PNG',
       '/screenshots/history.PNG?v=2',
       '/screenshots/insights.PNG?v=2',
-      '/screenshots/map2.PNG'
+      '/screenshots/settings.PNG',
+      '/screenshots/map2.PNG',
+      '/screenshots/watch-dashboard.PNG',
+      '/screenshots/watch-log-event-button.PNG',
+      '/screenshots/watch-quick-log.PNG',
+      '/screenshots/watch-logged-confirmation.PNG'
     ];
     let lbIndex = 0;
     function openLightbox(i) {
