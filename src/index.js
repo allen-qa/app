@@ -399,6 +399,17 @@ const landingHTML = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PottyTime — Dog Potty Tracker for iPhone</title>
   <meta name="description" content="House training your dog, made simple. Log potty breaks in one tap, get smart reminders, and track your pup's progress with charts and insights.">
+  <link rel="icon" type="image/png" href="/app-icon.png">
+  <link rel="apple-touch-icon" href="/app-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PottyTime — Dog Potty Tracker">
+  <meta property="og:description" content="House training your dog, made simple. Log potty breaks in one tap, get smart reminders, and track your pup's progress.">
+  <meta property="og:image" content="https://app.pottytime.workers.dev/app-icon.png">
+  <meta property="og:url" content="https://app.pottytime.workers.dev">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PottyTime — Dog Potty Tracker">
+  <meta name="twitter:description" content="House training your dog, made simple. Log potty breaks in one tap, get smart reminders, and track your pup's progress.">
+  <meta name="twitter:image" content="https://app.pottytime.workers.dev/app-icon.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -414,13 +425,38 @@ const landingHTML = `<!DOCTYPE html>
     /* Hero */
     .hero {
       text-align: center;
-      padding: 5rem 1.5rem 3rem;
+      padding: 4rem 1.5rem 3rem;
       background: linear-gradient(180deg, #0F2341 0%, #0B1A2E 100%);
     }
-    .hero-icon {
-      font-size: 5rem;
-      margin-bottom: 0.5rem;
+    .hero-device {
+      margin: 0 auto 2rem;
+      width: 220px;
+      position: relative;
+    }
+    .hero-device .phone-frame {
+      position: relative;
+      width: 220px;
+      border-radius: 36px;
+      border: 4px solid #2A2A2A;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
+      background: #000;
+    }
+    .hero-device .phone-frame img {
+      width: 100%;
+      height: auto;
       display: block;
+    }
+    .hero-device .phone-notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 22px;
+      background: #000;
+      border-radius: 0 0 16px 16px;
+      z-index: 2;
     }
     .hero h1 {
       font-size: 2.8rem;
@@ -432,6 +468,12 @@ const landingHTML = `<!DOCTYPE html>
     .hero .tagline {
       font-size: 1.35rem;
       color: #A0C4E8;
+      margin-bottom: 0.35rem;
+      font-weight: 500;
+    }
+    .hero .tagline-secondary {
+      font-size: 1.1rem;
+      color: #6B8DB5;
       margin-bottom: 1rem;
       font-weight: 500;
     }
@@ -439,46 +481,98 @@ const landingHTML = `<!DOCTYPE html>
       font-size: 1.05rem;
       color: #8BA8C8;
       max-width: 540px;
-      margin: 0 auto 2rem;
+      margin: 0 auto 0.75rem;
       line-height: 1.7;
+    }
+    .hero .quip {
+      font-size: 0.95rem;
+      color: #5B7A9D;
+      font-style: italic;
+      margin-bottom: 2rem;
     }
     .app-store-badge {
       display: inline-block;
-      transition: opacity 0.2s;
+      transition: transform 0.2s, opacity 0.2s;
     }
-    .app-store-badge:hover { opacity: 0.85; text-decoration: none; }
-    .app-store-badge img {
+    .app-store-badge:hover { opacity: 0.9; transform: scale(1.03); text-decoration: none; }
+    .app-store-badge svg {
       height: 54px;
-      border-radius: 12px;
+      width: auto;
     }
-    .app-store-btn {
-      display: inline-block;
-      background: #fff;
-      color: #0B1A2E;
-      font-size: 1.05rem;
+
+    /* How It Works */
+    .how-it-works {
+      padding: 3.5rem 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .how-it-works h2 {
+      font-size: 1.8rem;
+      color: #fff;
+      margin-bottom: 2.5rem;
+    }
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .step {
+      flex: 1 1 180px;
+      max-width: 220px;
+      text-align: center;
+    }
+    .step-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #111F35;
+      border: 1px solid #1C3350;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.8rem;
+    }
+    .step-number {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #4A90D9;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.35rem;
+    }
+    .step h3 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.3rem;
       font-weight: 600;
-      padding: 0.85rem 2rem;
-      border-radius: 12px;
-      transition: background 0.2s, transform 0.2s;
     }
-    .app-store-btn:hover { background: #E8EEF4; transform: translateY(-1px); text-decoration: none; }
-    .app-store-btn svg { vertical-align: middle; margin-right: 0.4rem; margin-top: -2px; }
+    .step p {
+      font-size: 0.9rem;
+      color: #7A9ABE;
+      line-height: 1.5;
+    }
 
     /* Screenshots */
     .screenshots {
-      padding: 2rem 1.5rem 3rem;
+      padding: 3rem 1.5rem 3.5rem;
       text-align: center;
     }
     .screenshots h2 {
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #5B7A9D;
-      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .screenshots .section-subtitle {
+      font-size: 1.05rem;
+      color: #6B8DB5;
+      margin-bottom: 2rem;
     }
     .screenshot-grid {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       justify-content: center;
       flex-wrap: nowrap;
       overflow-x: auto;
@@ -488,19 +582,27 @@ const landingHTML = `<!DOCTYPE html>
       scroll-snap-type: x mandatory;
     }
     .screenshot-slot {
-      flex: 0 0 220px;
+      flex: 0 0 auto;
       scroll-snap-align: center;
       cursor: pointer;
       transition: transform 0.2s ease;
     }
     .screenshot-slot:hover {
-      transform: scale(1.08);
+      transform: scale(1.05);
     }
-    .screenshot-slot img {
-      width: 220px;
+    .screenshot-slot .device-frame {
+      position: relative;
+      width: 260px;
+      border-radius: 36px;
+      border: 4px solid #2A2A2A;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06);
+      background: #000;
+    }
+    .screenshot-slot .device-frame img {
+      width: 100%;
       height: auto;
-      border-radius: 24px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      display: block;
       pointer-events: none;
     }
 
@@ -641,13 +743,18 @@ const landingHTML = `<!DOCTYPE html>
 
     /* Responsive */
     @media (max-width: 640px) {
-      .hero { padding: 3.5rem 1.25rem 2.5rem; }
+      .hero { padding: 3rem 1.25rem 2.5rem; }
       .hero h1 { font-size: 2.2rem; }
       .hero .tagline { font-size: 1.15rem; }
       .hero .description { font-size: 0.95rem; }
+      .hero-device { width: 180px; }
+      .hero-device .phone-frame { width: 180px; border-radius: 30px; }
+      .hero-device .phone-notch { width: 80px; height: 18px; }
       .feature-grid { grid-template-columns: 1fr; }
-      .screenshot-slot { flex: 0 0 180px; height: 360px; }
+      .screenshot-slot .device-frame { width: 220px; border-radius: 30px; }
       .features h2 { font-size: 1.6rem; }
+      .steps { gap: 1.5rem; }
+      .step { max-width: 280px; }
     }
   </style>
 </head>
@@ -655,24 +762,73 @@ const landingHTML = `<!DOCTYPE html>
 
   <!-- Hero -->
   <section class="hero">
-    <span class="hero-icon">🐾</span>
+    <div class="hero-device">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <img src="/screenshots/dashboard.PNG?v=2" alt="PottyTime Dashboard">
+      </div>
+    </div>
     <h1>PottyTime</h1>
     <p class="tagline">House training your dog, made simple.</p>
+    <p class="tagline-secondary">Free on the App Store</p>
     <p class="description">Log potty breaks in one tap, get smart reminders when you leave or return home, and track your pup's progress with charts and insights.</p>
-    <a href="https://apps.apple.com/app/pottytime" class="app-store-btn">
-      <svg width="20" height="24" viewBox="0 0 20 24" fill="none"><path d="M16.52 12.46c-.03-2.85 2.33-4.22 2.44-4.29-1.33-1.94-3.4-2.21-4.13-2.24-1.76-.18-3.43 1.03-4.33 1.03-.89 0-2.27-1.01-3.73-.98-1.92.03-3.69 1.12-4.68 2.84-2 3.46-.51 8.59 1.43 11.4.95 1.38 2.09 2.92 3.58 2.86 1.43-.06 1.98-.93 3.71-.93 1.74 0 2.23.93 3.75.9 1.55-.03 2.53-1.4 3.47-2.78 1.1-1.6 1.55-3.14 1.57-3.22-.03-.01-3.03-1.16-3.08-4.59zM13.68 3.92C14.47 2.96 15 1.66 14.87.34c-1.1.05-2.44.74-3.23 1.67-.71.82-1.33 2.14-1.16 3.4 1.23.1 2.48-.62 3.2-1.49z" fill="currentColor"/></svg>
-      Download on the App Store
+    <p class="quip">Because "did you take the dog out?" shouldn't require a group text.</p>
+    <a href="https://apps.apple.com/app/pottytime" class="app-store-badge">
+      <svg xmlns="http://www.w3.org/2000/svg" width="160" height="54" viewBox="0 0 160 54">
+        <rect width="160" height="54" rx="12" fill="#000"/>
+        <rect x="0.5" y="0.5" width="159" height="53" rx="11.5" stroke="#A6A6A6" fill="none" stroke-width="1"/>
+        <g fill="#fff">
+          <path d="M33.52 27.14c-.03-3.04 2.49-4.5 2.6-4.57-1.42-2.07-3.63-2.35-4.41-2.39-1.88-.19-3.66 1.1-4.62 1.1-.95 0-2.42-1.08-3.98-1.05-2.05.03-3.94 1.19-4.99 3.03-2.13 3.69-.54 9.16 1.53 12.16 1.01 1.47 2.23 3.12 3.82 3.06 1.53-.06 2.11-.99 3.96-.99s2.38.99 4 .96c1.65-.03 2.7-1.5 3.7-2.97 1.17-1.7 1.65-3.35 1.68-3.44-.04-.02-3.23-1.24-3.29-4.9z"/>
+          <path d="M30.48 18.3c.84-1.02 1.41-2.44 1.26-3.86-1.22.05-2.7.82-3.57 1.84-.78.92-1.46 2.39-1.28 3.79 1.36.11 2.74-.68 3.59-1.77z"/>
+        </g>
+        <g fill="#fff">
+          <text x="50" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="9.5" fill="#fff">Download on the</text>
+          <text x="50" y="39" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#fff">App Store</text>
+        </g>
+      </svg>
     </a>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.172C10 3.782 8.883 2.64 7.5 2.64S5 3.782 5 5.172c0 1.39.617 2.531 2 2.531h1"/><path d="M14 5.172C14 3.782 15.117 2.64 16.5 2.64S19 3.782 19 5.172c0 1.39-.617 2.531-2 2.531h-1"/><path d="M4 14c0 4 2 7 8 7s8-3 8-7c0-2-1-4-3.5-5H7.5C5 10 4 12 4 14z"/><circle cx="9" cy="14" r="1" fill="#4A90D9" stroke="none"/><circle cx="15" cy="14" r="1" fill="#4A90D9" stroke="none"/><path d="M9 18c1 1 5 1 6 0"/></svg>
+        </div>
+        <p class="step-number">Step 1</p>
+        <h3>Add Your Dog</h3>
+        <p>Set up your pup's profile with their name, breed, and photo.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="17" r="2.5" fill="none"/><path d="M12 10v-1" stroke-dasharray="2 2"/><path d="M9.5 7h5" opacity="0.4"/></svg>
+        </div>
+        <p class="step-number">Step 2</p>
+        <h3>Tap to Log</h3>
+        <p>One tap to log pee, poop, or both. It takes about two seconds.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><circle cx="12" cy="2" r="1" fill="#4A90D9" stroke="none"/></svg>
+        </div>
+        <p class="step-number">Step 3</p>
+        <h3>Get Smart Reminders</h3>
+        <p>Automatic alerts based on patterns and when you leave or arrive home.</p>
+      </div>
+    </div>
   </section>
 
   <!-- Screenshots -->
   <section class="screenshots">
-    <h2>App Preview</h2>
+    <h2>See It in Action</h2>
+    <p class="section-subtitle">Dashboard, history, insights, and GPS map</p>
     <div class="screenshot-grid">
-      <div class="screenshot-slot" onclick="openLightbox(0)"><img src="/screenshots/dashboard.PNG?v=2" alt="PottyTime Dashboard" loading="lazy"></div>
-      <div class="screenshot-slot" onclick="openLightbox(1)"><img src="/screenshots/history.PNG?v=2" alt="PottyTime History" loading="lazy"></div>
-      <div class="screenshot-slot" onclick="openLightbox(2)"><img src="/screenshots/insights.PNG?v=2" alt="PottyTime Insights" loading="lazy"></div>
-      <div class="screenshot-slot" onclick="openLightbox(3)"><img src="/screenshots/map2.PNG" alt="PottyTime Map" loading="lazy"></div>
+      <div class="screenshot-slot" onclick="openLightbox(0)"><div class="device-frame"><img src="/screenshots/dashboard.PNG?v=2" alt="PottyTime Dashboard" loading="lazy"></div></div>
+      <div class="screenshot-slot" onclick="openLightbox(1)"><div class="device-frame"><img src="/screenshots/history.PNG?v=2" alt="PottyTime History" loading="lazy"></div></div>
+      <div class="screenshot-slot" onclick="openLightbox(2)"><div class="device-frame"><img src="/screenshots/insights.PNG?v=2" alt="PottyTime Insights" loading="lazy"></div></div>
+      <div class="screenshot-slot" onclick="openLightbox(3)"><div class="device-frame"><img src="/screenshots/map2.PNG" alt="PottyTime Map" loading="lazy"></div></div>
     </div>
   </section>
 
@@ -722,14 +878,14 @@ const landingHTML = `<!DOCTYPE html>
     <p class="section-subtitle">Powerful features, dead-simple interface</p>
     <div class="feature-grid">
       <div class="feature-card">
-        <span class="icon">⚡</span>
-        <h3>One-Tap Logging</h3>
-        <p>Log pee, poop, both, or accidents instantly. Long-press to add notes and adjust the time.</p>
-      </div>
-      <div class="feature-card">
         <span class="icon">🏠</span>
         <h3>Smart Home Alerts</h3>
         <p>Automatic reminders when you leave or arrive home so you never forget a potty break.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">👨‍👩‍👧‍👦</span>
+        <h3>Family Sharing</h3>
+        <p>Sync with your whole household in real time. One-time $6.99 purchase, free to join.</p>
       </div>
       <div class="feature-card">
         <span class="icon">📊</span>
@@ -742,9 +898,9 @@ const landingHTML = `<!DOCTYPE html>
         <p>Color-coded pins, heatmap overlay, and walk tracking to see where your dog goes.</p>
       </div>
       <div class="feature-card">
-        <span class="icon">👨‍👩‍👧‍👦</span>
-        <h3>Family Sharing</h3>
-        <p>Sync with your whole household in real time. One-time $6.99 purchase, free to join.</p>
+        <span class="icon">🔔</span>
+        <h3>Potty Reminders</h3>
+        <p>Smart interval reminders based on your dog's patterns so you're always one step ahead.</p>
       </div>
       <div class="feature-card">
         <span class="icon">⌚</span>
@@ -757,9 +913,9 @@ const landingHTML = `<!DOCTYPE html>
         <p>Home Screen and Lock Screen widgets for at-a-glance info on your dog's last break.</p>
       </div>
       <div class="feature-card">
-        <span class="icon">🔔</span>
-        <h3>Potty Reminders</h3>
-        <p>Smart interval reminders based on your dog's patterns so you're always one step ahead.</p>
+        <span class="icon">⚡</span>
+        <h3>One-Tap Logging</h3>
+        <p>Log pee, poop, both, or accidents instantly. Long-press to add notes and adjust the time.</p>
       </div>
     </div>
   </section>
