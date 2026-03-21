@@ -1222,18 +1222,8 @@ const landingHTML = `<!DOCTYPE html>
       .social-proof { padding: 3.5rem 1.25rem; }
       .lightbox-content { position: relative; max-width: 85vw; gap: 0; }
       .lightbox-content img { max-width: 85vw; }
-      .lb-btn {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 36px;
-        height: 36px;
-        font-size: 1.3rem;
-        z-index: 2;
-        background: rgba(0,0,0,0.5);
-      }
-      .lb-btn:first-of-type { left: 4px; }
-      .lb-btn:last-of-type { right: 4px; }
+      .lb-btn { display: none; }
+      .lightbox-content img { touch-action: pan-y; }
     }
   </style>
 </head>
@@ -1425,6 +1415,17 @@ const landingHTML = `<!DOCTYPE html>
       if (e.key === 'ArrowLeft') navigateLightbox(-1);
       if (e.key === 'ArrowRight') navigateLightbox(1);
     });
+    (function() {
+      var lbEl = document.getElementById('lightbox');
+      var startX = 0;
+      lbEl.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+      lbEl.addEventListener('touchend', function(e) {
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 50) navigateLightbox(dx < 0 ? 1 : -1);
+      });
+    })();
   </script>
 
   <!-- Features Bento Grid -->
