@@ -27,57 +27,90 @@ const baseStyle = `
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #fafafa;
-    color: #333;
+    background: linear-gradient(180deg, #0F2341 0%, #0B1A2E 100%);
+    background-attachment: fixed;
+    color: #E8EEF4;
     line-height: 1.6;
-    padding: 2rem 1rem;
-    max-width: 680px;
+    min-height: 100vh;
+  }
+  .page-header {
+    padding: 1.5rem 1.5rem 0;
+    max-width: 720px;
     margin: 0 auto;
   }
-  h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
-  .subtitle { color: #888; font-size: 0.95rem; margin-bottom: 2rem; }
-  h2 { font-size: 1.15rem; margin-top: 1.8rem; margin-bottom: 0.5rem; color: #222; }
-  h3 { font-size: 1.05rem; margin-top: 1.2rem; margin-bottom: 0.4rem; color: #333; }
+  .page-header a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 700;
+    transition: opacity 0.2s;
+  }
+  .page-header a:hover { opacity: 0.8; text-decoration: none; }
+  .page-header img {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+  .page-content {
+    padding: 1.5rem 1.5rem 2rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.8rem; margin-bottom: 0.25rem; color: #fff; }
+  .subtitle { color: #6B8DB5; font-size: 0.95rem; margin-bottom: 2rem; }
+  h2 { font-size: 1.15rem; margin-top: 1.8rem; margin-bottom: 0.5rem; color: #fff; }
+  h3 { font-size: 1.05rem; margin-top: 1.2rem; margin-bottom: 0.4rem; color: #A0C4E8; }
   .tip-box {
-    background: #fff;
-    border: 1px solid #e5e7eb;
+    background: #111F35;
+    border: 1px solid #1C3350;
     border-radius: 8px;
     padding: 1rem 1.25rem;
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
   }
   .tip-box p { margin: 0; }
-  p, li { font-size: 0.95rem; color: #444; }
+  p, li { font-size: 0.95rem; color: #B0C8E0; }
   ul, ol { padding-left: 1.25rem; margin-bottom: 0.75rem; }
   li { margin-bottom: 0.35rem; }
-  a { color: #2563eb; text-decoration: none; }
+  a { color: #5B9BD5; text-decoration: none; }
   a:hover { text-decoration: underline; }
   p, li, h1, h2 { overflow-wrap: break-word; word-break: break-word; }
   @media (max-width: 480px) {
-    body { padding: 1.5rem 1rem; }
+    .page-content { padding: 1.25rem 1rem 2rem; }
+    .page-header { padding: 1.25rem 1rem 0; }
     h1 { font-size: 1.5rem; }
     h2 { font-size: 1.05rem; }
   }
   .section { margin-bottom: 1.5rem; }
   .contact-box {
-    background: #fff;
-    border: 1px solid #e5e7eb;
+    background: #111F35;
+    border: 1px solid #1C3350;
     border-radius: 8px;
     padding: 1rem 1.25rem;
     margin-top: 1rem;
   }
-  .footer { margin-top: 2.5rem; font-size: 0.8rem; color: #aaa; text-align: center; }
-  .site-footer { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.85rem; color: #888; }
-  .site-footer nav { margin-bottom: 0.5rem; }
-  .site-footer nav a { margin: 0 0.5rem; color: #2563eb; text-decoration: none; }
+  .footer { margin-top: 2.5rem; font-size: 0.8rem; color: #4A6A8A; text-align: center; }
+  .site-footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid #1C3350; }
+  .site-footer nav { margin-bottom: 1rem; }
+  .site-footer nav a { margin: 0 0.75rem; color: #5B9BD5; font-size: 0.95rem; text-decoration: none; }
   .site-footer nav a:hover { text-decoration: underline; }
-  .site-footer p { color: #aaa; font-size: 0.8rem; }
+  .site-footer .tagline-footer { color: #4A6A8A; font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .site-footer .copyright { color: #3A5570; font-size: 0.8rem; }
 `;
 
 const footerHTML = `
   <footer class="site-footer">
-    <nav><a href="/privacy">Privacy Policy</a> <a href="/support">Support</a> <a href="/terms">Terms of Use</a> <a href="/guide">User Guide</a></nav>
-    <p>&copy; 2026 PottyTime. All rights reserved.</p>
+    <nav>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/support">Support</a>
+      <a href="/terms">Terms of Use</a>
+      <a href="/guide">User Guide</a>
+    </nav>
+    <p class="tagline-footer">Made with love for dog parents everywhere</p>
+    <p class="copyright">&copy; 2026 PottyTime. All rights reserved.</p>
   </footer>
 `;
 
@@ -87,11 +120,17 @@ const privacyHTML = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PottyTime — Privacy Policy</title>
+  <link rel="icon" type="image/png" href="/app-icon.png">
+  <link rel="apple-touch-icon" href="/app-icon.png">
   <style>${baseStyle}</style>
 </head>
 <body>
-  <h1><a href="/" style="color:inherit;text-decoration:none;display:inline-block;transition:transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">🐾 PottyTime</a></h1>
-  <p class="subtitle">Privacy Policy</p>
+  <header class="page-header">
+    <a href="/"><img src="/app-icon.png" alt="PottyTime"> PottyTime</a>
+  </header>
+  <div class="page-content">
+  <h1>Privacy Policy</h1>
+  <p class="subtitle">How PottyTime handles your data</p>
 
   <div class="section">
     <h2>Authentication</h2>
@@ -183,6 +222,7 @@ const privacyHTML = `<!DOCTYPE html>
   </div>
 
   <p class="footer">Last updated March 20, 2026</p>
+  </div>
   ${footerHTML}
 </body>
 </html>`;
@@ -193,11 +233,17 @@ const supportHTML = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PottyTime — Support</title>
+  <link rel="icon" type="image/png" href="/app-icon.png">
+  <link rel="apple-touch-icon" href="/app-icon.png">
   <style>${baseStyle}</style>
 </head>
 <body>
-  <h1><a href="/" style="color:inherit;text-decoration:none;display:inline-block;transition:transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">🐾 PottyTime</a></h1>
-  <p class="subtitle">Support</p>
+  <header class="page-header">
+    <a href="/"><img src="/app-icon.png" alt="PottyTime"> PottyTime</a>
+  </header>
+  <div class="page-content">
+  <h1>Support</h1>
+  <p class="subtitle">Help &amp; troubleshooting</p>
 
   <div class="section">
     <p>PottyTime is a dog potty tracking app with household sharing. Log potty events, track your dogs' routines, and keep everyone in your household in sync.</p>
@@ -300,6 +346,7 @@ const supportHTML = `<!DOCTYPE html>
     </div>
   </div>
 
+  </div>
   ${footerHTML}
 </body>
 </html>`;
@@ -310,11 +357,17 @@ const termsHTML = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PottyTime — Terms of Use</title>
+  <link rel="icon" type="image/png" href="/app-icon.png">
+  <link rel="apple-touch-icon" href="/app-icon.png">
   <style>${baseStyle}</style>
 </head>
 <body>
-  <h1><a href="/" style="color:inherit;text-decoration:none;display:inline-block;transition:transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">🐾 PottyTime</a></h1>
-  <p class="subtitle">Terms of Use</p>
+  <header class="page-header">
+    <a href="/"><img src="/app-icon.png" alt="PottyTime"> PottyTime</a>
+  </header>
+  <div class="page-content">
+  <h1>Terms of Use</h1>
+  <p class="subtitle">Rules for using PottyTime</p>
 
   <div class="section">
     <h2>About PottyTime</h2>
@@ -388,6 +441,7 @@ const termsHTML = `<!DOCTYPE html>
   </div>
 
   <p class="footer">Last updated March 20, 2026</p>
+  </div>
   ${footerHTML}
 </body>
 </html>`;
@@ -1012,11 +1066,17 @@ const guideHTML = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PottyTime — User Guide</title>
+  <link rel="icon" type="image/png" href="/app-icon.png">
+  <link rel="apple-touch-icon" href="/app-icon.png">
   <style>${baseStyle}</style>
 </head>
 <body>
-  <h1><a href="/" style="color:inherit;text-decoration:none;display:inline-block;transition:transform 0.2s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">🐾 PottyTime</a></h1>
-  <p class="subtitle">User Guide</p>
+  <header class="page-header">
+    <a href="/"><img src="/app-icon.png" alt="PottyTime"> PottyTime</a>
+  </header>
+  <div class="page-content">
+  <h1>User Guide</h1>
+  <p class="subtitle">Everything you need to know about PottyTime</p>
 
   <div class="section">
     <p>Welcome to PottyTime — the easiest way to track your dog's potty habits. This guide covers everything you need to know.</p>
@@ -1243,6 +1303,7 @@ const guideHTML = `<!DOCTYPE html>
     </div>
   </div>
 
+  </div>
   ${footerHTML}
 </body>
 </html>`;
