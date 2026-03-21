@@ -1342,7 +1342,7 @@ const landingHTML = `<!DOCTYPE html>
       </div>
     </div>
     <div class="screenshot-grid-secondary">
-      <div class="screenshot-slot" onclick="openLightbox(2)"><div class="device-frame"><img src="/screenshots/history.PNG?v=2" alt="PottyTime History" loading="lazy"></div></div>
+      <div class="screenshot-slot" onclick="openLightbox(2)"><div class="device-frame"><img src="/screenshots/history-updated.PNG" alt="PottyTime History" loading="lazy"></div></div>
       <div class="screenshot-slot" onclick="openLightbox(4)"><div class="device-frame"><img src="/screenshots/settings-updated.PNG" alt="PottyTime Settings" loading="lazy"></div></div>
       <div class="screenshot-slot" onclick="openLightbox(5)"><div class="device-frame"><img src="/screenshots/map2.PNG" alt="PottyTime Map" loading="lazy"></div></div>
     </div>
@@ -1395,7 +1395,7 @@ const landingHTML = `<!DOCTYPE html>
     const lbImages = [
       '/screenshots/dashboard-updated.PNG',
       '/screenshots/quick-log-updated.PNG',
-      '/screenshots/history.PNG?v=2',
+      '/screenshots/history-updated.PNG',
       '/screenshots/insights.PNG?v=2',
       '/screenshots/settings-updated.PNG',
       '/screenshots/map2.PNG',
