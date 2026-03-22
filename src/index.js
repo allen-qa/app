@@ -1089,11 +1089,7 @@ const landingHTML = `<!DOCTYPE html>
       align-items: center;
     }
     .widget-frame {
-      border-radius: 24px;
-      border: 3px solid #2A2A2A;
       overflow: hidden;
-      background: #000;
-      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
       cursor: pointer;
       transition: transform 0.2s;
     }
@@ -1106,7 +1102,7 @@ const landingHTML = `<!DOCTYPE html>
       display: block;
     }
     .widget-medium {
-      width: 220px;
+      width: 280px;
     }
     .widget-small {
       width: 140px;
