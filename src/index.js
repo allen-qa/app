@@ -1023,6 +1023,95 @@ const landingHTML = `<!DOCTYPE html>
       display: block;
     }
 
+    /* Widgets */
+    .widgets {
+      padding: 5rem 2rem;
+      background: var(--surface);
+    }
+    .widgets-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+    }
+    .widgets-text {
+      flex: 1;
+    }
+    .widgets-text h2 {
+      font-size: 2.2rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .widgets-text > p {
+      font-size: 1.05rem;
+      color: var(--on-surface-variant);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .widgets-callout {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--surface-high);
+      border: 1px solid var(--outline-variant);
+      border-radius: 14px;
+    }
+    .widgets-callout-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(160,202,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.2rem;
+    }
+    .widgets-callout h4 {
+      font-size: 0.95rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 0.1rem;
+    }
+    .widgets-callout p {
+      font-size: 0.85rem;
+      color: var(--on-surface-variant);
+    }
+    .widgets-gallery {
+      flex: 1;
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .widget-frame {
+      border-radius: 24px;
+      border: 3px solid #2A2A2A;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .widget-frame:hover {
+      transform: scale(1.04);
+    }
+    .widget-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .widget-medium {
+      width: 220px;
+    }
+    .widget-small {
+      width: 140px;
+    }
+
     /* Bento Features */
     .features {
       padding: 4.5rem 2rem;
@@ -1202,6 +1291,16 @@ const landingHTML = `<!DOCTYPE html>
         flex: 0 0 auto;
         scroll-snap-align: center;
       }
+      .widgets { padding: 3rem 1.25rem; }
+      .widgets-inner {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+      }
+      .widgets-text h2 { font-size: 1.6rem; }
+      .widgets-gallery { gap: 1rem; }
+      .widget-medium { width: 180px; }
+      .widget-small { width: 110px; }
       .watch-companion { padding: 3rem 1.25rem; }
       .watch-inner {
         flex-direction: column;
@@ -1358,14 +1457,40 @@ const landingHTML = `<!DOCTYPE html>
         </div>
         <div style="position:relative; z-index:2;">
           <div class="watch-frame-hero" onclick="openLightbox(6)">
-            <img src="/screenshots/watch-dashboard.PNG?v=2" alt="PottyTime Watch Dashboard" loading="lazy">
+            <img src="/screenshots/watch-dashboard.PNG?v=3" alt="PottyTime Watch Dashboard" loading="lazy">
             <div class="watch-crown"></div>
           </div>
           <div class="watch-thumbnails">
-            <div class="watch-thumb" onclick="openLightbox(7)"><img src="/screenshots/watch-log-button.PNG" alt="Watch Log" loading="lazy"></div>
-            <div class="watch-thumb" onclick="openLightbox(8)"><img src="/screenshots/watch-quick-log.PNG?v=2" alt="Watch Quick Log" loading="lazy"></div>
-            <div class="watch-thumb" onclick="openLightbox(9)"><img src="/screenshots/watch-log-confirmation.PNG" alt="Watch Confirmation" loading="lazy"></div>
+            <div class="watch-thumb" onclick="openLightbox(7)"><img src="/screenshots/watch-log-button.PNG?v=2" alt="Watch Log" loading="lazy"></div>
+            <div class="watch-thumb" onclick="openLightbox(8)"><img src="/screenshots/watch-quick-log.PNG?v=3" alt="Watch Quick Log" loading="lazy"></div>
+            <div class="watch-thumb" onclick="openLightbox(9)"><img src="/screenshots/watch-log-confirmation.PNG?v=2" alt="Watch Confirmation" loading="lazy"></div>
+            <div class="watch-thumb" onclick="openLightbox(10)"><img src="/screenshots/watch-after-log.PNG" alt="Watch After Log" loading="lazy"></div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Widgets -->
+  <section class="widgets">
+    <div class="widgets-inner">
+      <div class="widgets-text">
+        <h2>Glanceable <span class="gradient-text">Widgets.</span></h2>
+        <p>Keep your pup's potty schedule front and center — right on your Home Screen.</p>
+        <div class="widgets-callout">
+          <div class="widgets-callout-icon">&#x1F4F2;</div>
+          <div>
+            <h4>At-a-Glance Info</h4>
+            <p>See last potty time and daily stats without opening the app.</p>
+          </div>
+        </div>
+      </div>
+      <div class="widgets-gallery">
+        <div class="widget-frame widget-medium" onclick="openLightbox(11)">
+          <img src="/screenshots/widget-medium.PNG" alt="PottyTime Medium Widget" loading="lazy">
+        </div>
+        <div class="widget-frame widget-small" onclick="openLightbox(12)">
+          <img src="/screenshots/widget-small.PNG" alt="PottyTime Small Widget" loading="lazy">
         </div>
       </div>
     </div>
@@ -1389,10 +1514,13 @@ const landingHTML = `<!DOCTYPE html>
       '/screenshots/insights.PNG?v=2',
       '/screenshots/settings-updated.PNG',
       '/screenshots/map2.PNG',
-      '/screenshots/watch-dashboard.PNG?v=2',
-      '/screenshots/watch-log-button.PNG',
-      '/screenshots/watch-quick-log.PNG?v=2',
-      '/screenshots/watch-log-confirmation.PNG'
+      '/screenshots/watch-dashboard.PNG?v=3',
+      '/screenshots/watch-log-button.PNG?v=2',
+      '/screenshots/watch-quick-log.PNG?v=3',
+      '/screenshots/watch-log-confirmation.PNG?v=2',
+      '/screenshots/watch-after-log.PNG',
+      '/screenshots/widget-medium.PNG',
+      '/screenshots/widget-small.PNG'
     ];
     let lbIndex = 0;
     function openLightbox(i) {
