@@ -1358,13 +1358,13 @@ const landingHTML = `<!DOCTYPE html>
         </div>
         <div style="position:relative; z-index:2;">
           <div class="watch-frame-hero" onclick="openLightbox(6)">
-            <img src="/screenshots/watch-dashboard.PNG" alt="PottyTime Watch Dashboard" loading="lazy">
+            <img src="/screenshots/watch-dashboard.PNG?v=2" alt="PottyTime Watch Dashboard" loading="lazy">
             <div class="watch-crown"></div>
           </div>
           <div class="watch-thumbnails">
-            <div class="watch-thumb" onclick="openLightbox(7)"><img src="/screenshots/watch-log-event-button.PNG" alt="Watch Log" loading="lazy"></div>
-            <div class="watch-thumb" onclick="openLightbox(8)"><img src="/screenshots/watch-quick-log.PNG" alt="Watch Quick Log" loading="lazy"></div>
-            <div class="watch-thumb" onclick="openLightbox(9)"><img src="/screenshots/watch-logged-confirmation.PNG" alt="Watch Confirmation" loading="lazy"></div>
+            <div class="watch-thumb" onclick="openLightbox(7)"><img src="/screenshots/watch-log-button.PNG" alt="Watch Log" loading="lazy"></div>
+            <div class="watch-thumb" onclick="openLightbox(8)"><img src="/screenshots/watch-quick-log.PNG?v=2" alt="Watch Quick Log" loading="lazy"></div>
+            <div class="watch-thumb" onclick="openLightbox(9)"><img src="/screenshots/watch-log-confirmation.PNG" alt="Watch Confirmation" loading="lazy"></div>
           </div>
         </div>
       </div>
@@ -1389,10 +1389,10 @@ const landingHTML = `<!DOCTYPE html>
       '/screenshots/insights.PNG?v=2',
       '/screenshots/settings-updated.PNG',
       '/screenshots/map2.PNG',
-      '/screenshots/watch-dashboard.PNG',
-      '/screenshots/watch-log-event-button.PNG',
-      '/screenshots/watch-quick-log.PNG',
-      '/screenshots/watch-logged-confirmation.PNG'
+      '/screenshots/watch-dashboard.PNG?v=2',
+      '/screenshots/watch-log-button.PNG',
+      '/screenshots/watch-quick-log.PNG?v=2',
+      '/screenshots/watch-log-confirmation.PNG'
     ];
     let lbIndex = 0;
     function openLightbox(i) {
