@@ -1266,7 +1266,7 @@ const landingHTML = `<!DOCTYPE html>
         <div class="hero-device">
           <div class="phone-frame">
             <div class="phone-notch"></div>
-            <img src="/screenshots/dashboard-3.PNG" alt="PottyTime Dashboard">
+            <img src="/screenshots/dashboard-4.PNG" alt="PottyTime Dashboard">
           </div>
         </div>
       </div>
@@ -1314,13 +1314,13 @@ const landingHTML = `<!DOCTYPE html>
     <div class="screenshot-stage">
       <div class="screenshot-slot stagger-left" onclick="openLightbox(0)">
         <div class="device-frame">
-          <img src="/screenshots/dashboard-3.PNG" alt="PottyTime Dashboard" loading="lazy">
+          <img src="/screenshots/dashboard-4.PNG" alt="PottyTime Dashboard" loading="lazy">
           <div class="screenshot-label"><span>Dashboard</span></div>
         </div>
       </div>
       <div class="screenshot-slot stagger-center" onclick="openLightbox(1)">
         <div class="device-frame">
-          <img src="/screenshots/quick-log-3.PNG" alt="PottyTime Quick Log" loading="lazy">
+          <img src="/screenshots/quick-log-4.PNG" alt="PottyTime Quick Log" loading="lazy">
           <div class="screenshot-label"><span>Quick Log</span></div>
         </div>
       </div>
@@ -1354,7 +1354,7 @@ const landingHTML = `<!DOCTYPE html>
       </div>
       <div class="watch-devices">
         <div class="watch-phone-frame">
-          <img src="/screenshots/dashboard-3.PNG" alt="PottyTime iPhone" loading="lazy">
+          <img src="/screenshots/dashboard-4.PNG" alt="PottyTime iPhone" loading="lazy">
         </div>
         <div style="position:relative; z-index:2;">
           <div class="watch-frame-hero" onclick="openLightbox(6)">
@@ -1383,8 +1383,8 @@ const landingHTML = `<!DOCTYPE html>
 
   <script>
     const lbImages = [
-      '/screenshots/dashboard-3.PNG',
-      '/screenshots/quick-log-3.PNG',
+      '/screenshots/dashboard-4.PNG',
+      '/screenshots/quick-log-4.PNG',
       '/screenshots/history-updated.PNG',
       '/screenshots/insights.PNG?v=2',
       '/screenshots/settings-updated.PNG',
