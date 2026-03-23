@@ -23,20 +23,43 @@ export default {
   },
 };
 
+const baseFontLink = `<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">`;
+
 const baseStyle = `
+  :root {
+    --surface-dim: #040d1a;
+    --surface: #0a1628;
+    --surface-low: #0c1a2e;
+    --surface-container: #111f35;
+    --surface-high: #182740;
+    --outline-variant: #2a3648;
+    --primary: #7eb8ff;
+    --primary-bright: #a0caff;
+    --on-surface: #dbe4f3;
+    --on-surface-variant: #a8b4c8;
+    --muted: #6B8DB5;
+    --muted-dark: #3d5a7a;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(180deg, #0F2341 0%, #0B1A2E 100%);
-    background-attachment: fixed;
-    color: #E8EEF4;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--surface-dim);
+    color: var(--on-surface);
     line-height: 1.6;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   .page-header {
-    padding: 1.5rem 1.5rem 0;
-    max-width: 720px;
-    margin: 0 auto;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(4, 13, 26, 0.7);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 0.85rem 2rem;
+    max-width: 100%;
   }
   .page-header a {
     display: inline-flex;
@@ -44,61 +67,92 @@ const baseStyle = `
     gap: 0.6rem;
     color: #fff;
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     font-weight: 700;
     transition: opacity 0.2s;
-  }
-  .page-header a:hover { opacity: 0.8; text-decoration: none; }
-  .page-header img {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-  }
-  .page-content {
-    padding: 1.5rem 1.5rem 2rem;
     max-width: 720px;
     margin: 0 auto;
   }
-  h1 { font-size: 1.8rem; margin-bottom: 0.25rem; color: #fff; }
-  .subtitle { color: #6B8DB5; font-size: 0.95rem; margin-bottom: 2rem; }
-  h2 { font-size: 1.15rem; margin-top: 1.8rem; margin-bottom: 0.5rem; color: #fff; }
-  h3 { font-size: 1.05rem; margin-top: 1.2rem; margin-bottom: 0.4rem; color: #A0C4E8; }
-  .tip-box {
-    background: #111F35;
-    border: 1px solid #1C3350;
+  .page-header a:hover { opacity: 0.8; text-decoration: none; }
+  .page-header img {
+    width: 32px;
+    height: 32px;
     border-radius: 8px;
-    padding: 1rem 1.25rem;
+  }
+  .page-content {
+    padding: 2.5rem 2rem 3rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.3rem;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 2.5rem; }
+  h2 {
+    font-size: 1.15rem;
+    margin-top: 2rem;
+    margin-bottom: 0.6rem;
+    color: #fff;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 1.05rem;
+    margin-top: 1.2rem;
+    margin-bottom: 0.4rem;
+    color: var(--primary-bright);
+    font-weight: 600;
+  }
+  .tip-box {
+    background: var(--surface-high);
+    border: 1px solid var(--outline-variant);
+    border-radius: 12px;
+    padding: 1.1rem 1.35rem;
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
   }
   .tip-box p { margin: 0; }
-  p, li { font-size: 0.95rem; color: #B0C8E0; }
+  p, li { font-size: 0.95rem; color: var(--on-surface-variant); }
   ul, ol { padding-left: 1.25rem; margin-bottom: 0.75rem; }
-  li { margin-bottom: 0.35rem; }
-  a { color: #5B9BD5; text-decoration: none; }
+  li { margin-bottom: 0.4rem; }
+  a { color: var(--primary); text-decoration: none; }
   a:hover { text-decoration: underline; }
   p, li, h1, h2 { overflow-wrap: break-word; word-break: break-word; }
+  strong { color: var(--on-surface); }
   @media (max-width: 480px) {
-    .page-content { padding: 1.25rem 1rem 2rem; }
-    .page-header { padding: 1.25rem 1rem 0; }
-    h1 { font-size: 1.5rem; }
+    .page-content { padding: 2rem 1.25rem 2.5rem; }
+    .page-header { padding: 0.75rem 1.25rem; }
+    h1 { font-size: 1.6rem; }
     h2 { font-size: 1.05rem; }
   }
-  .section { margin-bottom: 1.5rem; }
+  .section {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--outline-variant);
+  }
+  .section:last-of-type { border-bottom: none; }
   .contact-box {
-    background: #111F35;
-    border: 1px solid #1C3350;
-    border-radius: 8px;
-    padding: 1rem 1.25rem;
+    background: var(--surface-high);
+    border: 1px solid var(--outline-variant);
+    border-radius: 12px;
+    padding: 1.1rem 1.35rem;
     margin-top: 1rem;
   }
-  .footer { margin-top: 2.5rem; font-size: 0.8rem; color: #4A6A8A; text-align: center; }
-  .site-footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid #1C3350; }
+  .footer { margin-top: 3rem; font-size: 0.8rem; color: var(--muted-dark); text-align: center; }
+  .site-footer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    border-top: 1px solid var(--outline-variant);
+    background: var(--surface-dim);
+  }
   .site-footer nav { margin-bottom: 1rem; }
-  .site-footer nav a { margin: 0 0.75rem; color: #5B9BD5; font-size: 0.95rem; text-decoration: none; }
-  .site-footer nav a:hover { text-decoration: underline; }
-  .site-footer .tagline-footer { color: #4A6A8A; font-size: 0.9rem; margin-bottom: 0.5rem; }
-  .site-footer .copyright { color: #3A5570; font-size: 0.8rem; }
+  .site-footer nav a { margin: 0 0.75rem; color: var(--muted); font-size: 0.9rem; text-decoration: none; transition: color 0.2s; }
+  .site-footer nav a:hover { color: var(--primary); text-decoration: none; }
+  .site-footer .tagline-footer { color: var(--muted-dark); font-size: 0.85rem; margin-bottom: 0.5rem; }
+  .site-footer .copyright { color: #2e4560; font-size: 0.78rem; }
 `;
 
 const footerHTML = `
@@ -122,6 +176,7 @@ const privacyHTML = `<!DOCTYPE html>
   <title>PottyTime — Privacy Policy</title>
   <link rel="icon" type="image/png" href="/app-icon.png">
   <link rel="apple-touch-icon" href="/app-icon.png">
+  ${baseFontLink}
   <style>${baseStyle}</style>
 </head>
 <body>
@@ -235,6 +290,7 @@ const supportHTML = `<!DOCTYPE html>
   <title>PottyTime — Support</title>
   <link rel="icon" type="image/png" href="/app-icon.png">
   <link rel="apple-touch-icon" href="/app-icon.png">
+  ${baseFontLink}
   <style>${baseStyle}</style>
 </head>
 <body>
@@ -346,6 +402,7 @@ const supportHTML = `<!DOCTYPE html>
     </div>
   </div>
 
+  <p class="footer">Last updated March 20, 2026</p>
   </div>
   ${footerHTML}
 </body>
@@ -359,6 +416,7 @@ const termsHTML = `<!DOCTYPE html>
   <title>PottyTime — Terms of Use</title>
   <link rel="icon" type="image/png" href="/app-icon.png">
   <link rel="apple-touch-icon" href="/app-icon.png">
+  ${baseFontLink}
   <style>${baseStyle}</style>
 </head>
 <body>
@@ -1855,6 +1913,7 @@ const guideHTML = `<!DOCTYPE html>
   <title>PottyTime — User Guide</title>
   <link rel="icon" type="image/png" href="/app-icon.png">
   <link rel="apple-touch-icon" href="/app-icon.png">
+  ${baseFontLink}
   <style>${baseStyle}</style>
 </head>
 <body>
@@ -2090,6 +2149,7 @@ const guideHTML = `<!DOCTYPE html>
     </div>
   </div>
 
+  <p class="footer">Last updated March 20, 2026</p>
   </div>
   ${footerHTML}
 </body>
