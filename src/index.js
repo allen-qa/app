@@ -464,37 +464,67 @@ const landingHTML = `<!DOCTYPE html>
   <meta name="twitter:title" content="PottyTime — Dog Potty Tracker">
   <meta name="twitter:description" content="House training your dog, made simple. Log potty breaks in one tap, get smart reminders, and track your pup's progress.">
   <meta name="twitter:image" content="https://app.pottytime.workers.dev/app-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --surface-dim: #051427;
-      --surface: #0B1A2E;
-      --surface-low: #0d1c30;
-      --surface-container: #122034;
-      --surface-high: #1c2a3f;
-      --surface-highest: #27354b;
-      --primary: #a0caff;
+      --surface-dim: #040d1a;
+      --surface: #0a1628;
+      --surface-low: #0c1a2e;
+      --surface-container: #111f35;
+      --surface-high: #182740;
+      --surface-highest: #223350;
+      --primary: #7eb8ff;
+      --primary-bright: #a0caff;
       --primary-container: #4f94dd;
-      --on-primary: #003259;
-      --on-surface: #d5e3ff;
-      --on-surface-variant: #c1c7d2;
-      --outline: #8b919c;
-      --outline-variant: #414751;
+      --on-primary: #002f57;
+      --on-surface: #dbe4f3;
+      --on-surface-variant: #a8b4c8;
+      --outline: #6b7a8e;
+      --outline-variant: #2a3648;
       --accent: #4A90D9;
       --muted: #6B8DB5;
-      --muted-dark: #4A6A8A;
+      --muted-dark: #3d5a7a;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--surface);
       color: var(--on-surface);
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    a { color: #5B9BD5; text-decoration: none; }
+    a { color: var(--primary); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .gradient-text {
-      color: var(--primary);
+      background: linear-gradient(135deg, var(--primary-bright), var(--primary-container));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-device { animation: none !important; }
+      .hero-glow-orb { animation: none !important; }
     }
 
     /* Glass Nav */
@@ -503,68 +533,94 @@ const landingHTML = `<!DOCTYPE html>
       top: 0;
       width: 100%;
       z-index: 50;
-      background: rgba(5, 20, 39, 0.7);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(10, 22, 40, 0.6);
+      backdrop-filter: blur(24px) saturate(1.4);
+      -webkit-backdrop-filter: blur(24px) saturate(1.4);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.3s;
     }
     .nav-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 0.9rem 2rem;
+      padding: 0.85rem 2rem;
     }
     .nav-brand {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--primary);
+      gap: 0.6rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
       letter-spacing: -0.3px;
     }
     .nav-brand img {
-      width: 30px;
-      height: 30px;
-      border-radius: 7px;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
     }
     .nav-cta {
       background: linear-gradient(135deg, var(--primary), var(--primary-container));
       color: var(--on-primary);
-      padding: 0.45rem 1.25rem;
+      padding: 0.5rem 1.4rem;
       border-radius: 9999px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-decoration: none;
       transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.2px;
     }
     .nav-cta:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 16px rgba(160,202,255,0.3);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(126,184,255,0.3);
       text-decoration: none;
     }
 
     /* Hero */
     .hero {
-      padding: 7rem 2rem 4rem;
-      background: linear-gradient(180deg, #0F2341 0%, var(--surface) 100%);
+      padding: 8rem 2rem 5rem;
+      background: var(--surface-dim);
       position: relative;
       overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
     }
-    .hero-glow {
+    .hero-glow-orb {
       position: absolute;
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 900px;
-      height: 500px;
-      background: radial-gradient(ellipse, rgba(160,202,255,0.08), transparent 70%);
+      border-radius: 50%;
+      filter: blur(80px);
       pointer-events: none;
+      animation: pulse-glow 6s ease-in-out infinite alternate;
+    }
+    .hero-glow-1 {
+      top: -10%;
+      left: 20%;
+      width: 500px;
+      height: 500px;
+      background: rgba(79, 148, 221, 0.12);
+    }
+    .hero-glow-2 {
+      bottom: -10%;
+      right: 10%;
+      width: 400px;
+      height: 400px;
+      background: rgba(126, 184, 255, 0.08);
+      animation-delay: 3s;
+    }
+    @keyframes pulse-glow {
+      0% { opacity: 0.6; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.15); }
+    }
+    @keyframes float-phone {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0); }
     }
     .hero-inner {
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -572,49 +628,60 @@ const landingHTML = `<!DOCTYPE html>
       align-items: center;
       position: relative;
       z-index: 1;
+      width: 100%;
     }
     .hero-text {
       text-align: left;
     }
     .hero-pill {
-      display: inline-block;
-      padding: 0.35rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem 0.4rem 0.6rem;
       border-radius: 9999px;
-      background: var(--surface-high);
+      background: rgba(126,184,255,0.08);
       color: var(--primary);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       text-transform: uppercase;
-      border: 1px solid var(--outline-variant);
-      margin-bottom: 1.25rem;
+      border: 1px solid rgba(126,184,255,0.15);
+      margin-bottom: 1.5rem;
+    }
+    .hero-pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: inline-block;
     }
     .hero h1 {
-      font-size: 3.2rem;
+      font-size: 3.5rem;
       font-weight: 800;
       color: #fff;
-      line-height: 1.1;
-      letter-spacing: -1px;
-      margin-bottom: 1rem;
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.25rem;
     }
     .hero .description {
       font-size: 1.1rem;
       color: var(--on-surface-variant);
-      max-width: 480px;
+      max-width: 460px;
       line-height: 1.7;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.75rem;
     }
     .hero .quip {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--muted);
       font-style: italic;
-      margin-bottom: 1.75rem;
+      margin-bottom: 2rem;
     }
     .app-store-badge {
       display: inline-block;
       transition: transform 0.2s, opacity 0.2s;
+      cursor: pointer;
     }
-    .app-store-badge:hover { opacity: 0.9; transform: scale(1.03); text-decoration: none; }
+    .app-store-badge:hover { opacity: 0.9; transform: translateY(-2px); text-decoration: none; }
     .app-store-badge svg { height: 54px; width: auto; }
     .hero-device-wrap {
       position: relative;
@@ -623,9 +690,9 @@ const landingHTML = `<!DOCTYPE html>
     }
     .hero-phone-glow {
       position: absolute;
-      inset: -2rem;
-      background: radial-gradient(circle, rgba(160,202,255,0.15), transparent 65%);
-      filter: blur(40px);
+      inset: -3rem;
+      background: radial-gradient(circle, rgba(126,184,255,0.18), transparent 65%);
+      filter: blur(50px);
       z-index: 0;
       pointer-events: none;
     }
@@ -633,14 +700,18 @@ const landingHTML = `<!DOCTYPE html>
       position: relative;
       z-index: 1;
       width: 280px;
+      animation: float-phone 5s ease-in-out infinite;
     }
     .hero-device .phone-frame {
       position: relative;
       width: 280px;
-      border-radius: 40px;
-      border: 5px solid #2A2A2A;
+      border-radius: 44px;
+      border: 5px solid #1e1e1e;
       overflow: hidden;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
+      box-shadow:
+        0 32px 80px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(255,255,255,0.06),
+        inset 0 0 0 1px rgba(255,255,255,0.04);
       background: #000;
     }
     .hero-device .phone-frame img {
@@ -653,91 +724,133 @@ const landingHTML = `<!DOCTYPE html>
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 110px;
-      height: 24px;
+      width: 120px;
+      height: 28px;
       background: #000;
-      border-radius: 0 0 18px 18px;
+      border-radius: 0 0 20px 20px;
       z-index: 2;
     }
 
     /* How It Works */
     .how-it-works {
-      padding: 4rem 2rem;
-      background: var(--surface-low);
+      padding: 5rem 2rem;
+      background: var(--surface);
       text-align: center;
+      position: relative;
+    }
+    .how-it-works::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(126,184,255,0.15), transparent);
     }
     .how-it-works-inner {
       max-width: 900px;
       margin: 0 auto;
     }
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
     .how-it-works h2 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       color: #fff;
       margin-bottom: 0.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
     }
     .how-it-works .section-subtitle {
       font-size: 1.05rem;
       color: var(--muted);
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
     }
     .steps {
       display: flex;
       justify-content: center;
-      gap: 2.5rem;
+      gap: 2rem;
       flex-wrap: wrap;
     }
     .step {
-      flex: 1 1 180px;
-      max-width: 240px;
+      flex: 1 1 200px;
+      max-width: 260px;
       text-align: center;
-    }
-    .step-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
+      padding: 2rem 1.5rem;
+      border-radius: 20px;
       background: var(--surface-container);
       border: 1px solid var(--outline-variant);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+    .step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .step-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: rgba(126,184,255,0.08);
+      border: 1px solid rgba(126,184,255,0.12);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1rem;
-      font-size: 1.8rem;
+      margin: 0 auto 1.25rem;
     }
     .step-number {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--primary);
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 0.35rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.4rem;
     }
     .step h3 {
       font-size: 1.1rem;
       color: #fff;
-      margin-bottom: 0.3rem;
-      font-weight: 600;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
     }
     .step p {
       font-size: 0.9rem;
-      color: #7A9ABE;
-      line-height: 1.5;
+      color: var(--on-surface-variant);
+      line-height: 1.55;
     }
 
     /* Screenshots */
     .screenshots {
-      padding: 4rem 2rem 4.5rem;
+      padding: 5rem 2rem 5.5rem;
       text-align: center;
-      background: var(--surface);
+      background: var(--surface-low);
+      position: relative;
+    }
+    .screenshots::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(126,184,255,0.15), transparent);
     }
     .screenshots h2 {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       color: #fff;
       margin-bottom: 0.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
     }
     .screenshots .section-subtitle {
       font-size: 1.05rem;
       color: var(--muted);
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
     }
     .screenshot-stage {
       position: relative;
@@ -746,17 +859,17 @@ const landingHTML = `<!DOCTYPE html>
       align-items: center;
       height: 560px;
       max-width: 900px;
-      margin: 0 auto 2rem;
+      margin: 0 auto 2.5rem;
     }
     .screenshot-slot {
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .screenshot-slot:hover { transform: translateY(-8px); }
+    .screenshot-slot:hover { transform: translateY(-10px); }
     .stagger-left {
       position: absolute;
       left: 5%;
-      top: 20px;
+      top: 24px;
       z-index: 2;
     }
     .stagger-center {
@@ -766,32 +879,37 @@ const landingHTML = `<!DOCTYPE html>
       top: 40px;
       z-index: 3;
     }
-    .stagger-center:hover { transform: translateX(-50%) translateY(-8px); }
+    .stagger-center:hover { transform: translateX(-50%) translateY(-10px); }
     .stagger-right {
       position: absolute;
       right: 5%;
-      top: 20px;
+      top: 24px;
       z-index: 2;
     }
     .stagger-left .device-frame,
     .stagger-right .device-frame {
       width: 220px;
       border-radius: 32px;
+      opacity: 0.85;
     }
     .stagger-center .device-frame {
-      width: 250px;
-      border-radius: 36px;
-      border-color: rgba(160,202,255,0.2);
-      box-shadow: 0 16px 60px rgba(0,0,0,0.5), 0 0 40px rgba(160,202,255,0.08);
+      width: 260px;
+      border-radius: 38px;
+      border-color: rgba(126,184,255,0.2);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 60px rgba(126,184,255,0.06);
     }
     .screenshot-slot .device-frame {
       position: relative;
       width: 220px;
       border-radius: 32px;
-      border: 4px solid #2A2A2A;
+      border: 4px solid #1e1e1e;
       overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.06);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.05);
       background: #000;
+      transition: box-shadow 0.3s;
+    }
+    .screenshot-slot:hover .device-frame {
+      box-shadow: 0 20px 56px rgba(0,0,0,0.5), 0 0 40px rgba(126,184,255,0.06);
     }
     .screenshot-slot .device-frame img {
       width: 100%;
@@ -804,20 +922,20 @@ const landingHTML = `<!DOCTYPE html>
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 2rem 1rem 0.75rem;
-      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      padding: 2.5rem 1rem 0.85rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
       pointer-events: none;
     }
     .screenshot-label span {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--primary);
+      letter-spacing: 2px;
+      color: var(--primary-bright);
     }
     .screenshot-grid-secondary {
       display: flex;
-      gap: 1rem;
+      gap: 1.25rem;
       justify-content: center;
       flex-wrap: wrap;
       padding: 0.5rem 0;
@@ -833,10 +951,12 @@ const landingHTML = `<!DOCTYPE html>
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.88);
+      background: rgba(0,0,0,0.92);
       z-index: 1000;
       align-items: center;
       justify-content: center;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
     .lightbox-overlay.active { display: flex; }
     .lightbox-content {
@@ -850,15 +970,15 @@ const landingHTML = `<!DOCTYPE html>
     .lightbox-content img {
       max-height: 85vh;
       max-width: min(400px, 70vw);
-      border-radius: 24px;
-      box-shadow: 0 12px 48px rgba(0,0,0,0.6);
+      border-radius: 28px;
+      box-shadow: 0 16px 64px rgba(0,0,0,0.6);
       user-select: none;
     }
     .lb-btn {
-      background: rgba(255,255,255,0.12);
-      border: none;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.1);
       color: #fff;
-      font-size: 2rem;
+      font-size: 1.8rem;
       width: 48px;
       height: 48px;
       border-radius: 50%;
@@ -866,29 +986,39 @@ const landingHTML = `<!DOCTYPE html>
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.2s;
       flex-shrink: 0;
     }
-    .lb-btn:hover { background: rgba(255,255,255,0.25); }
+    .lb-btn:hover { background: rgba(255,255,255,0.2); transform: scale(1.05); }
     .lb-close {
       position: absolute;
-      top: -48px;
+      top: -52px;
       right: 0;
       background: none;
       border: none;
       color: #fff;
       font-size: 2rem;
       cursor: pointer;
-      opacity: 0.7;
+      opacity: 0.6;
       transition: opacity 0.2s;
     }
     .lb-close:hover { opacity: 1; }
 
     /* Watch Companion */
     .watch-companion {
-      padding: 5rem 2rem;
-      background: var(--surface-low);
+      padding: 6rem 2rem;
+      background: var(--surface);
       overflow: hidden;
+      position: relative;
+    }
+    .watch-companion::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(126,184,255,0.15), transparent);
     }
     .watch-inner {
       max-width: 1000px;
@@ -901,7 +1031,7 @@ const landingHTML = `<!DOCTYPE html>
       flex: 1;
     }
     .watch-text h2 {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       color: #fff;
       margin-bottom: 1rem;
       font-weight: 800;
@@ -911,35 +1041,38 @@ const landingHTML = `<!DOCTYPE html>
       font-size: 1.05rem;
       color: var(--on-surface-variant);
       line-height: 1.7;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
     }
-    .watch-callout {
+    .callout-card {
       display: flex;
       align-items: center;
       gap: 1rem;
-      padding: 1rem 1.25rem;
-      background: var(--surface-high);
+      padding: 1.1rem 1.4rem;
+      background: rgba(126,184,255,0.04);
       border: 1px solid var(--outline-variant);
-      border-radius: 14px;
+      border-radius: 16px;
+      transition: border-color 0.3s;
     }
-    .watch-callout-icon {
+    .callout-card:hover {
+      border-color: rgba(126,184,255,0.2);
+    }
+    .callout-icon {
       width: 44px;
       height: 44px;
-      border-radius: 50%;
-      background: rgba(160,202,255,0.1);
+      border-radius: 12px;
+      background: rgba(126,184,255,0.1);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      font-size: 1.2rem;
     }
-    .watch-callout h4 {
+    .callout-card h4 {
       font-size: 0.95rem;
       color: #fff;
       font-weight: 700;
-      margin-bottom: 0.1rem;
+      margin-bottom: 0.15rem;
     }
-    .watch-callout p {
+    .callout-card p {
       font-size: 0.85rem;
       color: var(--on-surface-variant);
     }
@@ -958,11 +1091,11 @@ const landingHTML = `<!DOCTYPE html>
       z-index: 1;
       width: 200px;
       border-radius: 32px;
-      border: 4px solid #2A2A2A;
+      border: 4px solid #1e1e1e;
       overflow: hidden;
       box-shadow: 0 16px 48px rgba(0,0,0,0.5);
       background: #000;
-      opacity: 0.5;
+      opacity: 0.4;
       transform: translateX(2rem);
     }
     .watch-phone-frame img {
@@ -975,14 +1108,14 @@ const landingHTML = `<!DOCTYPE html>
       z-index: 2;
       width: 170px;
       border-radius: 42px;
-      border: 8px solid #333;
+      border: 8px solid #2a2a2a;
       overflow: hidden;
       background: #1a1a1a;
-      box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 30px rgba(160,202,255,0.08);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.5), 0 0 40px rgba(126,184,255,0.06);
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .watch-frame-hero:hover { transform: scale(1.03); }
+    .watch-frame-hero:hover { transform: scale(1.04); }
     .watch-frame-hero img {
       width: 100%;
       height: auto;
@@ -994,7 +1127,7 @@ const landingHTML = `<!DOCTYPE html>
       top: 35%;
       width: 6px;
       height: 32px;
-      background: #333;
+      background: #2a2a2a;
       border-radius: 0 3px 3px 0;
       z-index: 3;
     }
@@ -1007,7 +1140,7 @@ const landingHTML = `<!DOCTYPE html>
     .watch-thumb {
       width: 60px;
       border-radius: 14px;
-      border: 2px solid #333;
+      border: 2px solid #2a2a2a;
       overflow: hidden;
       background: #000;
       cursor: pointer;
@@ -1025,8 +1158,18 @@ const landingHTML = `<!DOCTYPE html>
 
     /* Widgets */
     .widgets {
-      padding: 5rem 2rem;
-      background: var(--surface);
+      padding: 6rem 2rem;
+      background: var(--surface-low);
+      position: relative;
+    }
+    .widgets::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(126,184,255,0.15), transparent);
     }
     .widgets-inner {
       max-width: 1000px;
@@ -1039,7 +1182,7 @@ const landingHTML = `<!DOCTYPE html>
       flex: 1;
     }
     .widgets-text h2 {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       color: #fff;
       margin-bottom: 1rem;
       font-weight: 800;
@@ -1049,37 +1192,7 @@ const landingHTML = `<!DOCTYPE html>
       font-size: 1.05rem;
       color: var(--on-surface-variant);
       line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-    .widgets-callout {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.25rem;
-      background: var(--surface-high);
-      border: 1px solid var(--outline-variant);
-      border-radius: 14px;
-    }
-    .widgets-callout-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(160,202,255,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1.2rem;
-    }
-    .widgets-callout h4 {
-      font-size: 0.95rem;
-      color: #fff;
-      font-weight: 700;
-      margin-bottom: 0.1rem;
-    }
-    .widgets-callout p {
-      font-size: 0.85rem;
-      color: var(--on-surface-variant);
+      margin-bottom: 1.75rem;
     }
     .widgets-gallery {
       flex: 1;
@@ -1091,10 +1204,11 @@ const landingHTML = `<!DOCTYPE html>
     .widget-frame {
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 20px;
     }
     .widget-frame:hover {
-      transform: scale(1.04);
+      transform: scale(1.04) translateY(-4px);
     }
     .widget-frame img {
       width: 100%;
@@ -1110,8 +1224,18 @@ const landingHTML = `<!DOCTYPE html>
 
     /* Bento Features */
     .features {
-      padding: 4.5rem 2rem;
+      padding: 5.5rem 2rem;
       background: var(--surface);
+      position: relative;
+    }
+    .features::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(126,184,255,0.15), transparent);
     }
     .features-inner {
       max-width: 1000px;
@@ -1119,7 +1243,7 @@ const landingHTML = `<!DOCTYPE html>
     }
     .features h2 {
       text-align: center;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       color: #fff;
       margin-bottom: 0.5rem;
       font-weight: 800;
@@ -1129,7 +1253,7 @@ const landingHTML = `<!DOCTYPE html>
       text-align: center;
       color: var(--muted);
       font-size: 1.05rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
     }
     .bento-grid {
       display: grid;
@@ -1142,71 +1266,116 @@ const landingHTML = `<!DOCTYPE html>
     .bento-card {
       background: var(--surface-high);
       border: 1px solid var(--outline-variant);
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 1.75rem;
-      transition: box-shadow 0.4s, transform 0.2s;
+      transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
       position: relative;
       overflow: hidden;
+      cursor: default;
     }
     .bento-card:hover {
-      box-shadow: 0 0 40px rgba(160,202,255,0.08);
-      transform: translateY(-2px);
+      box-shadow: 0 8px 40px rgba(126,184,255,0.08);
+      transform: translateY(-3px);
+      border-color: rgba(126,184,255,0.15);
     }
-    .bento-card .icon {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
-      display: block;
+    .bento-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(126,184,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
     }
     .bento-card h3 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: #fff;
       margin-bottom: 0.4rem;
       font-weight: 700;
     }
     .bento-card p {
-      font-size: 0.92rem;
-      color: #7A9ABE;
-      line-height: 1.55;
+      font-size: 0.9rem;
+      color: var(--on-surface-variant);
+      line-height: 1.6;
     }
     .bento-card .bento-glow {
       position: absolute;
       right: -40px;
       bottom: -40px;
-      width: 160px;
-      height: 160px;
-      background: rgba(160,202,255,0.04);
+      width: 180px;
+      height: 180px;
+      background: rgba(126,184,255,0.03);
       border-radius: 50%;
-      filter: blur(40px);
+      filter: blur(50px);
       pointer-events: none;
       transition: background 0.4s;
     }
     .bento-card:hover .bento-glow {
-      background: rgba(160,202,255,0.08);
+      background: rgba(126,184,255,0.08);
     }
 
-    /* Social Proof */
-    .social-proof {
-      padding: 5rem 2rem;
+    /* CTA */
+    .cta-section {
+      padding: 6rem 2rem;
       background: var(--surface-low);
       text-align: center;
       position: relative;
       overflow: hidden;
     }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(126,184,255,0.15), transparent);
+    }
+    .cta-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(126,184,255,0.1), transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      font-size: 2.4rem;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      position: relative;
+    }
+    .cta-section p {
+      color: var(--on-surface-variant);
+      font-size: 1.05rem;
+      margin-bottom: 2.25rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
     .cta-button {
       display: inline-block;
       background: linear-gradient(135deg, var(--primary), var(--primary-container));
       color: var(--on-primary);
-      padding: 0.9rem 2.5rem;
+      padding: 0.95rem 2.75rem;
       border-radius: 9999px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       text-decoration: none;
       transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 8px 32px rgba(160,202,255,0.2);
+      box-shadow: 0 8px 32px rgba(126,184,255,0.2);
+      position: relative;
+      letter-spacing: 0.2px;
     }
     .cta-button:hover {
-      transform: scale(1.04);
-      box-shadow: 0 8px 40px rgba(160,202,255,0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 48px rgba(126,184,255,0.35);
       text-decoration: none;
     }
 
@@ -1215,46 +1384,50 @@ const landingHTML = `<!DOCTYPE html>
       text-align: center;
       padding: 3rem 1.5rem;
       border-top: 1px solid var(--outline-variant);
-      background: var(--surface);
+      background: var(--surface-dim);
     }
     .landing-footer nav { margin-bottom: 1rem; }
     .landing-footer nav a {
       margin: 0 0.75rem;
-      color: #5B9BD5;
-      font-size: 0.95rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: color 0.2s;
     }
+    .landing-footer nav a:hover { color: var(--primary); text-decoration: none; }
     .landing-footer .tagline-footer {
       color: var(--muted-dark);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       margin-bottom: 0.5rem;
     }
     .landing-footer .copyright {
-      color: #3A5570;
-      font-size: 0.8rem;
+      color: #2e4560;
+      font-size: 0.78rem;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
       .nav-inner { padding: 0.75rem 1.25rem; }
-      .hero { padding: 5.5rem 1.25rem 2.5rem; }
+      .hero { padding: 6rem 1.25rem 3rem; min-height: auto; }
       .hero-inner {
         grid-template-columns: 1fr;
         gap: 2.5rem;
         text-align: center;
       }
       .hero-text { text-align: center; }
-      .hero h1 { font-size: 2.4rem; }
+      .hero h1 { font-size: 2.4rem; letter-spacing: -1px; }
       .hero .description { margin: 0 auto 0.6rem; font-size: 1rem; }
-      .hero .quip { font-size: 0.9rem; }
-      .hero-device { width: 200px; }
-      .hero-device .phone-frame { width: 200px; border-radius: 32px; border-width: 4px; }
-      .hero-device .phone-notch { width: 90px; height: 20px; }
+      .hero .quip { font-size: 0.88rem; }
+      .hero-device { width: 220px; }
+      .hero-device .phone-frame { width: 220px; border-radius: 36px; border-width: 4px; }
+      .hero-device .phone-notch { width: 100px; height: 22px; }
       .hero-device-wrap { order: -1; }
-      .how-it-works { padding: 3rem 1.25rem; }
-      .how-it-works h2 { font-size: 1.5rem; }
-      .steps { gap: 1.5rem; }
-      .screenshots { padding: 3rem 1.25rem; }
-      .screenshots h2 { font-size: 1.6rem; }
+      .hero-glow-orb { display: none; }
+      .how-it-works { padding: 3.5rem 1.25rem; }
+      .how-it-works h2 { font-size: 1.6rem; }
+      .steps { gap: 1rem; }
+      .step { padding: 1.5rem 1.25rem; }
+      .screenshots { padding: 3.5rem 1.25rem; }
+      .screenshots h2 { font-size: 1.7rem; }
       .screenshot-stage {
         position: static;
         height: auto;
@@ -1274,6 +1447,7 @@ const landingHTML = `<!DOCTYPE html>
       .stagger-right .device-frame {
         width: 220px;
         border-radius: 30px;
+        opacity: 1;
       }
       .screenshot-grid-secondary {
         flex-wrap: nowrap;
@@ -1287,34 +1461,35 @@ const landingHTML = `<!DOCTYPE html>
         flex: 0 0 auto;
         scroll-snap-align: center;
       }
-      .widgets { padding: 3rem 1.25rem; }
+      .widgets { padding: 3.5rem 1.25rem; }
       .widgets-inner {
         flex-direction: column;
         gap: 2rem;
         text-align: center;
       }
-      .widgets-text h2 { font-size: 1.6rem; }
+      .widgets-text h2 { font-size: 1.7rem; }
       .widgets-gallery { gap: 1rem; }
       .widget-medium { width: 180px; }
       .widget-small { width: 110px; }
-      .watch-companion { padding: 3rem 1.25rem; }
+      .watch-companion { padding: 3.5rem 1.25rem; }
       .watch-inner {
         flex-direction: column;
         gap: 2rem;
         text-align: center;
       }
-      .watch-text h2 { font-size: 1.6rem; }
+      .watch-text h2 { font-size: 1.7rem; }
       .watch-devices {
         min-height: 300px;
         width: 100%;
       }
       .watch-phone-frame { width: 150px; border-radius: 26px; }
       .watch-frame-hero { width: 130px; border-radius: 34px; border-width: 6px; }
-      .features { padding: 3rem 1.25rem; }
-      .features h2 { font-size: 1.6rem; }
+      .features { padding: 3.5rem 1.25rem; }
+      .features h2 { font-size: 1.7rem; }
       .bento-grid { grid-template-columns: 1fr; }
       .bento-8, .bento-6, .bento-4 { grid-column: 1 / -1; }
-      .social-proof { padding: 3.5rem 1.25rem; }
+      .cta-section { padding: 4rem 1.25rem; }
+      .cta-section h2 { font-size: 1.7rem; }
       .lightbox-content { position: relative; max-width: 85vw; gap: 0; }
       .lightbox-content img { max-width: 85vw; }
       .lb-btn { display: none; }
@@ -1328,20 +1503,21 @@ const landingHTML = `<!DOCTYPE html>
   <nav class="glass-nav">
     <div class="nav-inner">
       <span class="nav-brand"><img src="/app-icon.png" alt="PottyTime"> PottyTime</span>
-      <a href="https://apps.apple.com/app/pottytime" class="nav-cta">App Store</a>
+      <a href="https://apps.apple.com/app/pottytime" class="nav-cta">Download Free</a>
     </div>
   </nav>
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-glow"></div>
+    <div class="hero-glow-orb hero-glow-1"></div>
+    <div class="hero-glow-orb hero-glow-2"></div>
     <div class="hero-inner">
       <div class="hero-text">
-        <span class="hero-pill">Free on the App Store</span>
+        <span class="hero-pill"><span class="hero-pill-dot"></span> Free on the App Store</span>
         <h1>House Training Your Dog, <span class="gradient-text">Made Simple.</span></h1>
         <p class="description">Log potty breaks in one tap, get smart reminders when you leave or return home, and track your pup's progress with charts and insights.</p>
         <p class="quip">Because "did you take the dog out?" shouldn't require a group text.</p>
-        <a href="https://apps.apple.com/app/pottytime" class="app-store-badge">
+        <a href="https://apps.apple.com/app/pottytime" class="app-store-badge" aria-label="Download on the App Store">
           <svg xmlns="http://www.w3.org/2000/svg" width="160" height="54" viewBox="0 0 160 54">
             <rect width="160" height="54" rx="12" fill="#000"/>
             <rect x="0.5" y="0.5" width="159" height="53" rx="11.5" stroke="#A6A6A6" fill="none" stroke-width="1"/>
@@ -1371,28 +1547,29 @@ const landingHTML = `<!DOCTYPE html>
   <!-- How It Works -->
   <section class="how-it-works">
     <div class="how-it-works-inner">
-      <h2>How It Works</h2>
-      <p class="section-subtitle">Three steps to potty training success</p>
+      <span class="section-label reveal">How It Works</span>
+      <h2 class="reveal">Three Steps to Success</h2>
+      <p class="section-subtitle reveal">From download to daily tracking in under a minute</p>
       <div class="steps">
-        <div class="step">
+        <div class="step reveal reveal-delay-1">
           <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.172C10 3.782 8.883 2.64 7.5 2.64S5 3.782 5 5.172c0 1.39.617 2.531 2 2.531h1"/><path d="M14 5.172C14 3.782 15.117 2.64 16.5 2.64S19 3.782 19 5.172c0 1.39-.617 2.531-2 2.531h-1"/><path d="M4 14c0 4 2 7 8 7s8-3 8-7c0-2-1-4-3.5-5H7.5C5 10 4 12 4 14z"/><circle cx="9" cy="14" r="1" fill="#4A90D9" stroke="none"/><circle cx="15" cy="14" r="1" fill="#4A90D9" stroke="none"/><path d="M9 18c1 1 5 1 6 0"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.172C10 3.782 8.883 2.64 7.5 2.64S5 3.782 5 5.172c0 1.39.617 2.531 2 2.531h1"/><path d="M14 5.172C14 3.782 15.117 2.64 16.5 2.64S19 3.782 19 5.172c0 1.39-.617 2.531-2 2.531h-1"/><path d="M4 14c0 4 2 7 8 7s8-3 8-7c0-2-1-4-3.5-5H7.5C5 10 4 12 4 14z"/><circle cx="9" cy="14" r="1" fill="var(--primary)" stroke="none"/><circle cx="15" cy="14" r="1" fill="var(--primary)" stroke="none"/><path d="M9 18c1 1 5 1 6 0"/></svg>
           </div>
           <p class="step-number">Step 1</p>
           <h3>Add Your Dog</h3>
           <p>Set up your pup's profile with their name, breed, and photo.</p>
         </div>
-        <div class="step">
+        <div class="step reveal reveal-delay-2">
           <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="17" r="2.5" fill="none"/><path d="M12 10v-1" stroke-dasharray="2 2"/><path d="M9.5 7h5" opacity="0.4"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="17" r="2.5" fill="none"/><path d="M12 10v-1" stroke-dasharray="2 2"/><path d="M9.5 7h5" opacity="0.4"/></svg>
           </div>
           <p class="step-number">Step 2</p>
           <h3>Tap to Log</h3>
           <p>One tap to log pee, poop, or both. It takes about two seconds.</p>
         </div>
-        <div class="step">
+        <div class="step reveal reveal-delay-3">
           <div class="step-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><circle cx="12" cy="2" r="1" fill="#4A90D9" stroke="none"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/><circle cx="12" cy="2" r="1" fill="var(--primary)" stroke="none"/></svg>
           </div>
           <p class="step-number">Step 3</p>
           <h3>Get Smart Reminders</h3>
@@ -1404,9 +1581,10 @@ const landingHTML = `<!DOCTYPE html>
 
   <!-- Screenshots -->
   <section class="screenshots">
-    <h2>Your Puppy's Journey, <span class="gradient-text">Tracked.</span></h2>
-    <p class="section-subtitle">Every moment logged is a step toward a cleaner home</p>
-    <div class="screenshot-stage">
+    <span class="section-label reveal">See It In Action</span>
+    <h2 class="reveal">Your Puppy's Journey, <span class="gradient-text">Tracked.</span></h2>
+    <p class="section-subtitle reveal">Every moment logged is a step toward a cleaner home</p>
+    <div class="screenshot-stage reveal">
       <div class="screenshot-slot stagger-left" onclick="openLightbox(0)">
         <div class="device-frame">
           <img src="/screenshots/dashboard-4.PNG" alt="PottyTime Dashboard" loading="lazy">
@@ -1426,7 +1604,7 @@ const landingHTML = `<!DOCTYPE html>
         </div>
       </div>
     </div>
-    <div class="screenshot-grid-secondary">
+    <div class="screenshot-grid-secondary reveal">
       <div class="screenshot-slot" onclick="openLightbox(2)"><div class="device-frame"><img src="/screenshots/history-updated.PNG" alt="PottyTime History" loading="lazy"></div></div>
       <div class="screenshot-slot" onclick="openLightbox(4)"><div class="device-frame"><img src="/screenshots/settings-updated.PNG" alt="PottyTime Settings" loading="lazy"></div></div>
       <div class="screenshot-slot" onclick="openLightbox(5)"><div class="device-frame"><img src="/screenshots/map2.PNG" alt="PottyTime Map" loading="lazy"></div></div>
@@ -1437,17 +1615,20 @@ const landingHTML = `<!DOCTYPE html>
   <section class="watch-companion">
     <div class="watch-inner">
       <div class="watch-text">
-        <h2>Also on Your <span class="gradient-text">Wrist.</span></h2>
-        <p>Log potty breaks right from your Apple Watch. Never fumble for your phone mid-walk again.</p>
-        <div class="watch-callout">
-          <div class="watch-callout-icon">&#x231A;</div>
+        <span class="section-label reveal">Apple Watch</span>
+        <h2 class="reveal">Also on Your <span class="gradient-text">Wrist.</span></h2>
+        <p class="reveal">Log potty breaks right from your Apple Watch. Never fumble for your phone mid-walk again.</p>
+        <div class="callout-card reveal">
+          <div class="callout-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
           <div>
             <h4>One-Tap Logging</h4>
             <p>Quick events from your wrist, synced to your iPhone instantly.</p>
           </div>
         </div>
       </div>
-      <div class="watch-devices">
+      <div class="watch-devices reveal">
         <div class="watch-phone-frame">
           <img src="/screenshots/dashboard-4.PNG" alt="PottyTime iPhone" loading="lazy">
         </div>
@@ -1471,17 +1652,20 @@ const landingHTML = `<!DOCTYPE html>
   <section class="widgets">
     <div class="widgets-inner">
       <div class="widgets-text">
-        <h2>Glanceable <span class="gradient-text">Widgets.</span></h2>
-        <p>Keep your pup's potty schedule front and center — right on your Home Screen.</p>
-        <div class="widgets-callout">
-          <div class="widgets-callout-icon">&#x1F4F2;</div>
+        <span class="section-label reveal">Widgets</span>
+        <h2 class="reveal">Glanceable <span class="gradient-text">Widgets.</span></h2>
+        <p class="reveal">Keep your pup's potty schedule front and center — right on your Home Screen.</p>
+        <div class="callout-card reveal">
+          <div class="callout-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
           <div>
             <h4>At-a-Glance Info</h4>
             <p>See last potty time and daily stats without opening the app.</p>
           </div>
         </div>
       </div>
-      <div class="widgets-gallery">
+      <div class="widgets-gallery reveal">
         <div class="widget-frame widget-medium" onclick="openLightbox(11)">
           <img src="/screenshots/widget-medium.PNG" alt="PottyTime Medium Widget" loading="lazy">
         </div>
@@ -1495,12 +1679,102 @@ const landingHTML = `<!DOCTYPE html>
   <!-- Lightbox Modal -->
   <div class="lightbox-overlay" id="lightbox" onclick="if(event.target===this)closeLightbox()">
     <div class="lightbox-content">
-      <button class="lb-close" onclick="closeLightbox()">&times;</button>
-      <button class="lb-btn" onclick="navigateLightbox(-1)">&#8249;</button>
-      <img id="lb-img" src="" alt="">
-      <button class="lb-btn" onclick="navigateLightbox(1)">&#8250;</button>
+      <button class="lb-close" onclick="closeLightbox()" aria-label="Close lightbox">&times;</button>
+      <button class="lb-btn" onclick="navigateLightbox(-1)" aria-label="Previous image">&#8249;</button>
+      <img id="lb-img" src="" alt="Screenshot preview">
+      <button class="lb-btn" onclick="navigateLightbox(1)" aria-label="Next image">&#8250;</button>
     </div>
   </div>
+
+  <!-- Features Bento Grid -->
+  <section class="features">
+    <div class="features-inner">
+      <span class="section-label reveal">Features</span>
+      <h2 class="reveal">Everything You Need to <span class="gradient-text">Train Your Pup</span></h2>
+      <p class="section-subtitle reveal">Powerful features, dead-simple interface</p>
+      <div class="bento-grid">
+        <div class="bento-card bento-8 reveal reveal-delay-1">
+          <div class="bento-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Smart Home Alerts</h3>
+          <p>Automatic reminders when you leave or arrive home so you never forget a potty break. Uses geofencing around your home location.</p>
+          <div class="bento-glow"></div>
+        </div>
+        <div class="bento-card bento-4 reveal reveal-delay-2">
+          <div class="bento-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          </div>
+          <h3>GPS Map</h3>
+          <p>Color-coded pins, heatmap overlay, and walk tracking.</p>
+        </div>
+        <div class="bento-card bento-4 reveal reveal-delay-1">
+          <div class="bento-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Family Sync</h3>
+          <p>Real-time sync for everyone. $6.99 one-time, free to join.</p>
+        </div>
+        <div class="bento-card bento-8 reveal reveal-delay-2">
+          <div class="bento-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3>Charts &amp; Insights</h3>
+          <p>Weekly trends, peak potty times, and daily stats to understand your dog's patterns. Track progress week over week.</p>
+          <div class="bento-glow"></div>
+        </div>
+        <div class="bento-card bento-6 reveal reveal-delay-1">
+          <div class="bento-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <h3>Smart Reminders</h3>
+          <p>Interval reminders that adapt to your dog's patterns so you're always one step ahead.</p>
+        </div>
+        <div class="bento-card bento-6 reveal reveal-delay-2">
+          <div class="bento-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>One-Tap Logging</h3>
+          <p>Log pee, poop, both, or accidents instantly. Long-press to add notes and adjust the time.</p>
+        </div>
+        <div class="bento-card bento-4 reveal reveal-delay-1">
+          <div class="bento-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <h3>Widgets</h3>
+          <p>Home Screen and Lock Screen widgets at a glance.</p>
+        </div>
+        <div class="bento-card bento-8 reveal reveal-delay-2">
+          <div class="bento-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Apple Watch</h3>
+          <p>Quick logging from your wrist. See your dog's dashboard, log events with a tap, and stay in sync with your iPhone.</p>
+          <div class="bento-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-glow"></div>
+    <h2 class="reveal">Ready to Start <span class="gradient-text">Training?</span></h2>
+    <p class="reveal">Download PottyTime for free and start tracking your pup's progress today.</p>
+    <a href="https://apps.apple.com/app/pottytime" class="cta-button reveal">Download Free</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <nav>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/support">Support</a>
+      <a href="/terms">Terms of Use</a>
+      <a href="/guide">User Guide</a>
+    </nav>
+    <p class="tagline-footer">Made with love for dog parents everywhere</p>
+    <p class="copyright">&copy; 2026 PottyTime. All rights reserved.</p>
+  </footer>
 
   <script>
     const lbImages = [
@@ -1550,79 +1824,25 @@ const landingHTML = `<!DOCTYPE html>
         if (Math.abs(dx) > 50) navigateLightbox(dx < 0 ? 1 : -1);
       });
     })();
+
+    /* Scroll Reveal with IntersectionObserver */
+    (function() {
+      var els = document.querySelectorAll('.reveal');
+      if (!window.IntersectionObserver) {
+        els.forEach(function(el) { el.classList.add('visible'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function(el) { observer.observe(el); });
+    })();
   </script>
-
-  <!-- Features Bento Grid -->
-  <section class="features">
-    <div class="features-inner">
-      <h2>Everything You Need to <span class="gradient-text">Train Your Pup</span></h2>
-      <p class="section-subtitle">Powerful features, dead-simple interface</p>
-      <div class="bento-grid">
-        <div class="bento-card bento-8">
-          <span class="icon">&#x1F3E0;</span>
-          <h3>Smart Home Alerts</h3>
-          <p>Automatic reminders when you leave or arrive home so you never forget a potty break. Uses geofencing around your home location.</p>
-          <div class="bento-glow"></div>
-        </div>
-        <div class="bento-card bento-4">
-          <span class="icon">&#x1F5FA;&#xFE0F;</span>
-          <h3>GPS Map</h3>
-          <p>Color-coded pins, heatmap overlay, and walk tracking.</p>
-        </div>
-        <div class="bento-card bento-4">
-          <span class="icon">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;&#x200D;&#x1F466;</span>
-          <h3>Family Sync</h3>
-          <p>Real-time sync for everyone. $6.99 one-time, free to join.</p>
-        </div>
-        <div class="bento-card bento-8">
-          <span class="icon">&#x1F4CA;</span>
-          <h3>Charts &amp; Insights</h3>
-          <p>Weekly trends, peak potty times, and daily stats to understand your dog's patterns. Track progress week over week.</p>
-          <div class="bento-glow"></div>
-        </div>
-        <div class="bento-card bento-6">
-          <span class="icon">&#x1F514;</span>
-          <h3>Smart Reminders</h3>
-          <p>Interval reminders that adapt to your dog's patterns so you're always one step ahead.</p>
-        </div>
-        <div class="bento-card bento-6">
-          <span class="icon">&#x26A1;</span>
-          <h3>One-Tap Logging</h3>
-          <p>Log pee, poop, both, or accidents instantly. Long-press to add notes and adjust the time.</p>
-        </div>
-        <div class="bento-card bento-4">
-          <span class="icon">&#x1F4F1;</span>
-          <h3>Widgets</h3>
-          <p>Home Screen and Lock Screen widgets at a glance.</p>
-        </div>
-        <div class="bento-card bento-8">
-          <span class="icon">&#x231A;</span>
-          <h3>Apple Watch</h3>
-          <p>Quick logging from your wrist. See your dog's dashboard, log events with a tap, and stay in sync with your iPhone.</p>
-          <div class="bento-glow"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="social-proof">
-    <h2 style="font-size:2rem;color:#fff;margin-bottom:0.5rem;font-weight:800;">Ready to Start <span class="gradient-text">Training?</span></h2>
-    <p style="color:var(--on-surface-variant);font-size:1.05rem;margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto;">Download PottyTime for free and start tracking your pup's progress today.</p>
-    <a href="https://apps.apple.com/app/pottytime" class="cta-button">Get PottyTime Today</a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="landing-footer">
-    <nav>
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/support">Support</a>
-      <a href="/terms">Terms of Use</a>
-      <a href="/guide">User Guide</a>
-    </nav>
-    <p class="tagline-footer">Made with love for dog parents everywhere</p>
-    <p class="copyright">&copy; 2026 PottyTime. All rights reserved.</p>
-  </footer>
 
 </body>
 </html>`;
