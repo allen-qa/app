@@ -43,7 +43,7 @@ const baseStyle = `
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--surface-dim);
+    background: var(--surface);
     color: var(--on-surface);
     line-height: 1.6;
     min-height: 100vh;
@@ -54,7 +54,7 @@ const baseStyle = `
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(4, 13, 26, 0.7);
+    background: rgba(10, 22, 40, 0.7);
     backdrop-filter: blur(24px) saturate(1.4);
     -webkit-backdrop-filter: blur(24px) saturate(1.4);
     border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -146,7 +146,7 @@ const baseStyle = `
     text-align: center;
     padding: 3rem 1.5rem;
     border-top: 1px solid var(--outline-variant);
-    background: var(--surface-dim);
+    background: var(--surface-low);
   }
   .site-footer nav { margin-bottom: 1rem; }
   .site-footer nav a { margin: 0 0.75rem; color: var(--muted); font-size: 0.9rem; text-decoration: none; transition: color 0.2s; }
