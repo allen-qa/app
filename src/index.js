@@ -1665,7 +1665,7 @@ const landingHTML = `<!DOCTYPE html>
     <div class="screenshot-grid-secondary reveal">
       <div class="screenshot-slot" onclick="openLightbox(2)"><div class="device-frame"><img src="/screenshots/history-updated.PNG" alt="PottyTime History" loading="lazy"></div></div>
       <div class="screenshot-slot" onclick="openLightbox(4)"><div class="device-frame"><img src="/screenshots/settings-updated.PNG" alt="PottyTime Settings" loading="lazy"></div></div>
-      <div class="screenshot-slot" onclick="openLightbox(5)"><div class="device-frame"><img src="/screenshots/map2.PNG" alt="PottyTime Map" loading="lazy"></div></div>
+      <div class="screenshot-slot" onclick="openLightbox(5)"><div class="device-frame"><img src="/screenshots/map-3.PNG" alt="PottyTime Map" loading="lazy"></div></div>
     </div>
   </section>
 
@@ -1841,7 +1841,7 @@ const landingHTML = `<!DOCTYPE html>
       '/screenshots/history-updated.PNG',
       '/screenshots/insights.PNG?v=2',
       '/screenshots/settings-updated.PNG',
-      '/screenshots/map2.PNG',
+      '/screenshots/map-3.PNG',
       '/screenshots/watch-dashboard.PNG?v=3',
       '/screenshots/watch-log-button.PNG?v=2',
       '/screenshots/watch-quick-log.PNG?v=3',
