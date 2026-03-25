@@ -214,7 +214,7 @@ const privacyHTML = `<!DOCTYPE html>
 
   <div class="section">
     <h2>Push Notifications</h2>
-    <p>PottyTime uses Firebase Cloud Messaging (FCM) to deliver push notifications when household members log events. Your device's FCM token is stored in Firestore alongside your user ID and is used solely to deliver these notifications. FCM tokens are automatically removed when you delete your account.</p>
+    <p>PottyTime uses Firebase Cloud Messaging (FCM) to deliver household event notifications — for example, when another household member logs a potty event. An FCM device token is stored in our Firestore database and associated with your user account. The token is used solely to deliver these notifications and is cleared when you sign out. No notification content is shared with third parties.</p>
   </div>
 
   <div class="section">
@@ -270,13 +270,19 @@ const privacyHTML = `<!DOCTYPE html>
   </div>
 
   <div class="section">
+    <h2>Your Data Rights</h2>
+    <p>You can <strong>delete your account and all associated data</strong> at any time from <strong>Settings &gt; Household &gt; Delete Account</strong>. This permanently removes your authentication credentials, Firestore user document, and all household associations.</p>
+    <p>You can also <strong>reset the app</strong> from <strong>Settings</strong>, which removes all local data and leaves any household you're in.</p>
+  </div>
+
+  <div class="section">
     <h2>Contact</h2>
     <div class="contact-box">
       <p>Questions about your data? Reach us at <a href="mailto:pottytimeapp@gmail.com">pottytimeapp@gmail.com</a></p>
     </div>
   </div>
 
-  <p class="footer">Last updated March 20, 2026</p>
+  <p class="footer">Last updated March 25, 2026</p>
   </div>
   ${footerHTML}
 </body>
@@ -402,7 +408,7 @@ const supportHTML = `<!DOCTYPE html>
     </div>
   </div>
 
-  <p class="footer">Last updated March 20, 2026</p>
+  <p class="footer">Last updated March 25, 2026</p>
   </div>
   ${footerHTML}
 </body>
@@ -498,7 +504,7 @@ const termsHTML = `<!DOCTYPE html>
     </div>
   </div>
 
-  <p class="footer">Last updated March 20, 2026</p>
+  <p class="footer">Last updated March 25, 2026</p>
   </div>
   ${footerHTML}
 </body>
@@ -2149,7 +2155,7 @@ const guideHTML = `<!DOCTYPE html>
     </div>
   </div>
 
-  <p class="footer">Last updated March 20, 2026</p>
+  <p class="footer">Last updated March 25, 2026</p>
   </div>
   ${footerHTML}
 </body>
